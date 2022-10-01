@@ -5,6 +5,7 @@
 package ui;
 
 import Employee_Data.Employee;
+import Employee_Data.EmployeeDirectory;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,10 +18,11 @@ public class CreateJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     Employee employee;
+    EmployeeDirectory directory;
     
-    public CreateJPanel(Employee employee) {
+    public CreateJPanel(EmployeeDirectory directory) {
         initComponents();
-        this.employee = employee;
+        this.directory = directory;
     }
 
     /**
@@ -203,7 +205,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void bttnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSaveActionPerformed
         // TODO add your handling code here:
         
-        employee.setName(txtName.getText());
+        /*employee.setName(txtName.getText());
         employee.setEmployee_id(txtEmployeeID.getText());
         employee.setAge(txtAge.getText());
         employee.setGender(txtGender.getText());
@@ -212,11 +214,44 @@ public class CreateJPanel extends javax.swing.JPanel {
         employee.setTeam_info(txtTeamInfo.getText());
         employee.setPosition_title(txtPositionTitle.getText());
         employee.setCell_no(txtContactNo.getText());
-        employee.setEmail_add(txtEmail.getText());
+        employee.setEmail_add(txtEmail.getText()); */
+        
+        String name = txtName.getText();
+        int employee_id = Integer.parseInt(txtEmployeeID.getText());
+        int age = Integer.parseInt(txtAge.getText());
+        String gender = txtGender.getText();
+        String start_date = txtStartDate.getText();
+        int level = Integer.parseInt(txtLevel.getText());
+        String team_info = txtTeamInfo.getText();
+        String pos_title = txtPositionTitle.getText();
+        int cell_no = Integer.parseInt(txtContactNo.getText());
+        String email = txtEmail.getText();
+        
+       
+        Employee ne = directory.addNewEmployee();
+        ne.setName(name);
+        ne.setEmployee_id(employee_id);
+        ne.setAge(age);
+        ne.setGender(gender);
+        ne.setStart_date(start_date);
+        ne.setLevel(level);
+        ne.setTeam_info(team_info);
+        ne.setPosition_title(pos_title);
+        ne.setCell_no(cell_no);
+        ne.setEmail_add(email);
         
         JOptionPane.showMessageDialog(this, "New Employee information is saved");
         
-        
+        txtName.setText("");
+        txtEmployeeID.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtStartDate.setText("");
+        txtLevel.setText("");
+        txtTeamInfo.setText("");
+        txtPositionTitle.setText("");
+        txtContactNo.setText("");
+        txtEmail.setText("");   
         
     }//GEN-LAST:event_bttnSaveActionPerformed
 

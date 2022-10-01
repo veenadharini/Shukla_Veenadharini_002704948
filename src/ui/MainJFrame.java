@@ -5,6 +5,7 @@
 package ui;
 
 import Employee_Data.Employee;
+import Employee_Data.EmployeeDirectory;
 
 /**
  *
@@ -17,12 +18,14 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     
     Employee employee;
-            
+    EmployeeDirectory directory;       
             
     public MainJFrame() {
         initComponents();
         
         employee = new Employee();
+        directory = new EmployeeDirectory();
+        
     }
 
     /**
@@ -88,7 +91,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnUpdate)
                 .addGap(21, 21, 21)
                 .addComponent(btnDelete)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(crud);
@@ -97,11 +100,11 @@ public class MainJFrame extends javax.swing.JFrame {
         workspace.setLayout(workspaceLayout);
         workspaceLayout.setHorizontalGroup(
             workspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
         workspaceLayout.setVerticalGroup(
             workspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(workspace);
@@ -123,7 +126,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
-        CreateJPanel createPanel = new CreateJPanel(employee);
+        CreateJPanel createPanel = new CreateJPanel(directory);
         splitPane.setRightComponent(createPanel);
       
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -131,7 +134,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
         // TODO add your handling code here:
         
-        DisplayJPanel displayPanel = new DisplayJPanel(employee);
+        DisplayJPanel displayPanel = new DisplayJPanel(directory);
         splitPane.setRightComponent(displayPanel);
     }//GEN-LAST:event_btnReadActionPerformed
 
