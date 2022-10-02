@@ -11,14 +11,14 @@ package Employee_Data;
 public class Employee {
     
     private String name;
-    private int employee_id;
+    private long employee_id;
     private int age;
     private String gender;
     private String start_date;
     private int level;
     private String team_info;
     private String position_title;
-    private int cell_no;
+    private long cell_no;
     private String email_add;
     private String photo;
 
@@ -30,11 +30,11 @@ public class Employee {
         this.name = name;
     }
 
-    public int getEmployee_id() {
+    public long getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(int employee_id) {
+    public void setEmployee_id(long employee_id) {
         this.employee_id = employee_id;
     }
 
@@ -86,11 +86,11 @@ public class Employee {
         this.position_title = position_title;
     }
 
-    public int getCell_no() {
+    public long getCell_no() {
         return cell_no;
     }
 
-    public void setCell_no(int cell_no) {
+    public void setCell_no(long cell_no) {
         this.cell_no = cell_no;
     }
 
@@ -114,6 +114,6 @@ public class Employee {
     public String toString(){
         return name;
     }
-    
-        
+
+   
 }

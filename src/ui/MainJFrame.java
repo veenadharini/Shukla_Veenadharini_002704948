@@ -42,12 +42,14 @@ public class MainJFrame extends javax.swing.JFrame {
         btnCreate = new javax.swing.JButton();
         btnRead = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         workspace = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 0, 255));
 
         splitPane.setDividerLocation(150);
+
+        crud.setBackground(new java.awt.Color(0, 51, 102));
 
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -65,8 +67,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         btnUpdate.setText("Update");
 
-        btnDelete.setText("Delete");
-
         javax.swing.GroupLayout crudLayout = new javax.swing.GroupLayout(crud);
         crud.setLayout(crudLayout);
         crudLayout.setHorizontalGroup(
@@ -74,8 +74,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(crudLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(btnRead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRead, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -83,18 +82,18 @@ public class MainJFrame extends javax.swing.JFrame {
         crudLayout.setVerticalGroup(
             crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(crudLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(149, 149, 149)
                 .addComponent(btnCreate)
                 .addGap(18, 18, 18)
                 .addComponent(btnRead)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdate)
-                .addGap(21, 21, 21)
-                .addComponent(btnDelete)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(crud);
+
+        workspace.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout workspaceLayout = new javax.swing.GroupLayout(workspace);
         workspace.setLayout(workspaceLayout);
@@ -175,7 +174,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRead;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JPanel crud;
