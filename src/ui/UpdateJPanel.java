@@ -61,6 +61,8 @@ public class UpdateJPanel extends javax.swing.JPanel {
         lblName1 = new javax.swing.JLabel();
         bttnView = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         lblUpdateEmp.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         lblUpdateEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUpdateEmp.setText("Update Employee");
