@@ -278,16 +278,6 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void bttnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSaveActionPerformed
         // TODO add your handling code here:
         
-        /*employee.setName(txtName.getText());
-        employee.setEmployee_id(txtEmployeeID.getText());
-        employee.setAge(txtAge.getText());
-        employee.setGender(txtGender.getText());
-        employee.setStart_date(txtStartDate.getText());
-        employee.setLevel(txtLevel.getText());
-        employee.setTeam_info(txtTeamInfo.getText());
-        employee.setPosition_title(txtPositionTitle.getText());
-        employee.setCell_no(txtContactNo.getText());
-        employee.setEmail_add(txtEmail.getText()); */
         
         if(txtName.getText().equals("")) {
         JOptionPane.showMessageDialog(null,"Employee Name is missing");

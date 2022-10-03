@@ -27,7 +27,7 @@ public class DisplayJPanel extends javax.swing.JPanel {
         
         this.directory = directory;
         populateEmpTable();
-        //displayEmployee();
+       
         
     }
 
@@ -328,26 +328,7 @@ public class DisplayJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_bttnViewActionPerformed
 
     private void tblEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmployeeMouseClicked
-        // TODO add your handling code here:
-        /*DefaultTableModel tblModel = (DefaultTableModel)tblEmployee.getModel();
-        
-        String tblName = tblModel.getValueAt(tblEmployee.getSelectedRow(),0).toString();
-        String tblEmpId =tblModel.getValueAt(tblEmployee.getSelectedRow(),1).toString();
-        
-        String name = txtName.getText();
-        long employee_id = Long.parseLong(txtEmployeeID.getText());
-        int age = Integer.parseInt(txtAge.getText());
-        String gender = txtGender.getText();
-        String start_date = txtStartDate.getText();
-        int level = Integer.parseInt(txtLevel.getText());
-        String team_info = txtTeamInfo.getText();
-        String pos_title = txtPositionTitle.getText();
-        long cell_no = Long.parseLong(txtContactNo.getText());
-        String email = txtEmail.getText();
-        txtName.setText(tblName);
-        txtEmployeeID.setText(tblEmpId); */
-        
-        
+      
     }//GEN-LAST:event_tblEmployeeMouseClicked
 
 
@@ -380,21 +361,7 @@ public class DisplayJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTeamInfo;
     // End of variables declaration//GEN-END:variables
 
-    //private void displayEmployee() {
-     
-       /*txtName.setText(employee.getName());
-        txtEmployeeID.setText(employee.getEmployee_id());
-        txtAge.setText(employee.getAge());
-        txtGender.setText(employee.getGender());
-        txtStartDate.setText(employee.getStart_date());
-        txtLevel.setText(employee.getLevel());
-        txtTeamInfo.setText(employee.getTeam_info());
-        txtPositionTitle.setText(employee.getPosition_title());
-        txtContactNo.setText(employee.getCell_no());
-        txtEmail.setText(employee.getEmail_add());  */
-           
-        
-    //}
+  
 
     private void populateEmpTable() {
         

@@ -257,23 +257,6 @@ public class UpdateJPanel extends javax.swing.JPanel {
 
     private void tblEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmployeeMouseClicked
         // TODO add your handling code here:
-        /*DefaultTableModel tblModel = (DefaultTableModel)tblEmployee.getModel();
-
-        String tblName = tblModel.getValueAt(tblEmployee.getSelectedRow(),0).toString();
-        String tblEmpId =tblModel.getValueAt(tblEmployee.getSelectedRow(),1).toString();
-
-        String name = txtName.getText();
-        long employee_id = Long.parseLong(txtEmployeeID.getText());
-        int age = Integer.parseInt(txtAge.getText());
-        String gender = txtGender.getText();
-        String start_date = txtStartDate.getText();
-        int level = Integer.parseInt(txtLevel.getText());
-        String team_info = txtTeamInfo.getText();
-        String pos_title = txtPositionTitle.getText();
-        long cell_no = Long.parseLong(txtContactNo.getText());
-        String email = txtEmail.getText();
-        txtName.setText(tblName);
-        txtEmployeeID.setText(tblEmpId); */
 
     }//GEN-LAST:event_tblEmployeeMouseClicked
 
