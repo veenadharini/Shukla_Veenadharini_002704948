@@ -43,6 +43,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnRead = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         workspace = new javax.swing.JPanel();
+        lblHeading = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 0, 255));
@@ -66,6 +67,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout crudLayout = new javax.swing.GroupLayout(crud);
         crud.setLayout(crudLayout);
@@ -88,22 +94,29 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnRead)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdate)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(crud);
 
         workspace.setBackground(new java.awt.Color(204, 204, 255));
 
+        lblHeading.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24)); // NOI18N
+        lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeading.setText("EMPLOYEE DIRECTORY");
+        lblHeading.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout workspaceLayout = new javax.swing.GroupLayout(workspace);
         workspace.setLayout(workspaceLayout);
         workspaceLayout.setHorizontalGroup(
             workspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addComponent(lblHeading, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
         workspaceLayout.setVerticalGroup(
             workspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            .addGroup(workspaceLayout.createSequentialGroup()
+                .addComponent(lblHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 249, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(workspace);
@@ -112,11 +125,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -136,6 +149,12 @@ public class MainJFrame extends javax.swing.JFrame {
         DisplayJPanel displayPanel = new DisplayJPanel(directory);
         splitPane.setRightComponent(displayPanel);
     }//GEN-LAST:event_btnReadActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        UpdateJPanel updatePanel = new UpdateJPanel(directory);
+        splitPane.setRightComponent(updatePanel);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +196,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnRead;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JPanel crud;
+    private javax.swing.JLabel lblHeading;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workspace;
     // End of variables declaration//GEN-END:variables
