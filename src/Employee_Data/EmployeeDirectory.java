@@ -37,6 +37,7 @@ public class EmployeeDirectory {
     
     public void deleteEmployee(Employee e){
         directory.remove(e);
+      
     
         
     }
