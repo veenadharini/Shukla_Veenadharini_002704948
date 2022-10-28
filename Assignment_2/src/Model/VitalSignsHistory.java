@@ -27,6 +27,12 @@ public class VitalSignsHistory {
         this.history = history;
     }
     
+    public VitalSigns addNewVitalSigns(){
+        VitalSigns vs = new VitalSigns();
+        history.add(vs);
+        return vs;
+        
     
+    }
 }
 

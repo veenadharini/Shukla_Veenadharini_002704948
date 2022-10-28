@@ -10,9 +10,10 @@ package Model;
  */
 public class Doctor {
     
-   private int DocID;
-   private String Docname;
-   private String Speciality;
+   public int DocID;
+   public String Docname;
+   public int Expyears;
+   public String Speciality;
 
     public int getDocID() {
         return DocID;

@@ -12,19 +12,19 @@ import java.util.ArrayList;
  */
 public class EncounterHistory {
     
-    private ArrayList<Encounter> encounterhis;
+    private ArrayList<Encounter> encounterhist;
     
     public EncounterHistory(){
-        this.encounterhis = new ArrayList<Encounter>();
+        this.encounterhist = new ArrayList<Encounter>();
         
     }
 
-    public ArrayList<Encounter> getEncounterhis() {
-        return encounterhis;
+    public ArrayList<Encounter> getEncounterhist() {
+        return encounterhist;
     }
 
-    public void setEncounterhis(ArrayList<Encounter> encounterhis) {
-        this.encounterhis = encounterhis;
+    public void setEncounterhis(ArrayList<Encounter> encounterhist) {
+        this.encounterhist = encounterhist;
     }
 
     
