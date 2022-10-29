@@ -168,9 +168,10 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void bttnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLoginActionPerformed
-        
+        String key = "0";
         String un = txtUsername.getText();
         String pass = txtPass.getText();
+        String role = comboRole.getSelectedItem().toString();
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -184,14 +185,39 @@ public class LoginFrame extends javax.swing.JFrame {
                 String password = rs.getString("password");
                 
                 if(un.equals(username)&& pass.equals(password)){
-                new SystemAdminFrame().setVisible(true);
-                dispose();
+                key ="1";
+                break;
                 }
-                else {
-                     JOptionPane.showMessageDialog(null, "Wrong Username and Password");
-                       }
             }
             
+            if(key.equals("1")){
+                if(role.equals("System Admin")){
+                    new SystemAdminFrame().setVisible(true);
+                    dispose();
+                }
+                else if(role.equals("Community Admin")){
+                    new CommAdminFrame().setVisible(true);
+                    dispose();
+                }
+                else if(role.equals("Hospital Admin")){
+                    new HospAdminFrame().setVisible(true);
+                    dispose();
+                }
+                else if(role.equals("Doctor")){
+                    new DoctorFrame().setVisible(true);
+                    dispose();
+                }
+                else if(role.equals("Paient")){
+                    new PatientFrame().setVisible(true);
+                    dispose(); 
+                }
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, "Wrong Username and Password");
+            }
+            
+           
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Connection Error!");
