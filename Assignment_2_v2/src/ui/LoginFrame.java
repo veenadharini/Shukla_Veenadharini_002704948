@@ -99,6 +99,11 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         bttnSignup.setText("Sign up");
+        bttnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnSignupActionPerformed(evt);
+            }
+        });
 
         lblSignuptxt.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         lblSignuptxt.setText("Dont have an account? Sign up now!");
@@ -171,7 +176,8 @@ public class LoginFrame extends javax.swing.JFrame {
         String key = "0";
         String un = txtUsername.getText();
         String pass = txtPass.getText();
-        String role = comboRole.getSelectedItem().toString();
+        String rol = comboRole.getSelectedItem().toString();
+        String role = "";
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -183,33 +189,36 @@ public class LoginFrame extends javax.swing.JFrame {
             while(rs.next()){
                 String username = rs.getString("username");
                 String password = rs.getString("password");
-                
-                if(un.equals(username)&& pass.equals(password)){
+                role =  rs.getString("role");
+                if(un.equals(username)&& pass.equals(password)&& rol.equals(role)){
                 key ="1";
                 break;
                 }
             }
             
             if(key.equals("1")){
-                if(role.equals("System Admin")){
+                if(rol.equals("System Admin")){
                     new SystemAdminFrame().setVisible(true);
                     dispose();
                 }
-                else if(role.equals("Community Admin")){
+                else if(rol.equals("Community Admin")){
                     new CommAdminFrame().setVisible(true);
                     dispose();
                 }
-                else if(role.equals("Hospital Admin")){
+                else if(rol.equals("Hospital Admin")){
                     new HospAdminFrame().setVisible(true);
                     dispose();
                 }
-                else if(role.equals("Doctor")){
+                else if(rol.equals("Doctor")){
                     new DoctorFrame().setVisible(true);
                     dispose();
                 }
                 else if(role.equals("Paient")){
                     new PatientFrame().setVisible(true);
                     dispose(); 
+                }
+                else {
+                JOptionPane.showMessageDialog(null, "Wrong Username and Password");
                 }
             }
             
@@ -227,6 +236,12 @@ public class LoginFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_bttnLoginActionPerformed
+
+    private void bttnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSignupActionPerformed
+        SignupFrame signup = new SignupFrame();
+        signup.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnSignupActionPerformed
 
     /**
      * @param args the command line arguments
