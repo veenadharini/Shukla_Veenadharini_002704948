@@ -9,5 +9,5 @@ package Model;
  * @author Veenadharini
  */
 public class City {
-    
+    public String[] cityName;
 }

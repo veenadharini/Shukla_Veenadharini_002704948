@@ -31,6 +31,7 @@ public class VitalSignsHistory {
         VitalSigns vs = new VitalSigns();
         history.add(vs);
         return vs;
+       
         
     
     }

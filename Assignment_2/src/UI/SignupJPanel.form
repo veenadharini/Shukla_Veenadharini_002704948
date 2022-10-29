@@ -272,13 +272,7 @@
     <Component class="javax.swing.JComboBox" name="ComboComm">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Choose Community.."/>
-            <StringItem index="1" value="Allston"/>
-            <StringItem index="2" value="Back Bay"/>
-            <StringItem index="3" value="Brooklyn Heights"/>
-            <StringItem index="4" value="EastVillage"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>

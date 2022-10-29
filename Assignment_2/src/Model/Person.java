@@ -11,13 +11,15 @@ package Model;
 public class Person {
     public String name;
     public String id;
-    public String email;
+    //public String email;
     public long mob;
     public String gender;
     public String bloodgroup;
+    public int age;
     public String city;
-    public String community;
-    public String address;
+    //public String community;
+    //public String address;
+    public House address = new House();
     public String password;
     public String userrole;
 
@@ -37,13 +39,13 @@ public class Person {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public long getMob() {
         return mob;
@@ -77,22 +79,37 @@ public class Person {
         this.city = city;
     }
 
-    public String getCommunity() {
-        return community;
+    public int getAge() {
+        return age;
     }
 
-    public void setCommunity(String community) {
-        this.community = community;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getAddress() {
+    public House getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+//    public String getCommunity() {
+//        return community;
+//    }
+//
+//    public void setCommunity(String community) {
+//        this.community = community;
+//    }
+//
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+    public void setAddress(House address) {
         this.address = address;
     }
 
+//    }
     public String getPassword() {
         return password;
     }
@@ -109,20 +126,20 @@ public class Person {
         this.userrole = userrole;
     }
    
-    public Person(String name, String id, String email, int mob, String gender, String bloodgroup, String city, String community, String address, String password, String userrole)
-    {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.mob = mob;         
-        this.gender = gender;
-        this.bloodgroup = bloodgroup;
-        this.city = city;
-        this.community = community;
-        this.address = address;
-        this.password = password;
-        this.userrole = userrole;
-                
-    }
+//    public Person(String name, String id, String email, int mob, String gender, String bloodgroup, String city, String community, String address, String password, String userrole)
+//    {
+//        this.name = name;
+//        this.id = id;
+//        this.email = email;
+//        this.mob = mob;         
+//        this.gender = gender;
+//        this.bloodgroup = bloodgroup;
+//        this.city = city;
+//        this.community = community;
+//        this.address = address;
+//        this.password = password;
+//        this.userrole = userrole;
+//                
+//    }
     
 }

@@ -8,12 +8,12 @@ package UI;
  *
  * @author Veenadharini
  */
-public class AdminFrame extends javax.swing.JFrame {
+public class PatientFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminFrame
+     * Creates new form PatientFrame
      */
-    public AdminFrame() {
+    public PatientFrame() {
         initComponents();
     }
 
@@ -28,46 +28,22 @@ public class AdminFrame extends javax.swing.JFrame {
 
         SplitPane = new javax.swing.JSplitPane();
         Menu = new javax.swing.JPanel();
-        bttnPatient = new javax.swing.JButton();
-        bttnDoctor = new javax.swing.JButton();
-        bttnHospital = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         WorkSpace = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        SplitPane.setDividerLocation(160);
+        SplitPane.setDividerLocation(150);
 
         Menu.setBackground(new java.awt.Color(0, 51, 102));
 
-        bttnPatient.setText("Patient");
-        bttnPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnPatientActionPerformed(evt);
-            }
-        });
+        jButton1.setText("Profile");
 
-        bttnDoctor.setText("Doctor");
+        jButton2.setText("Encounter History");
 
-        bttnHospital.setText("Hospital");
-        bttnHospital.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnHospitalActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Community");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MANAGE");
+        jButton3.setText("Search Doctor near me");
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -76,32 +52,27 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(MenuLayout.createSequentialGroup()
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bttnHospital)
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(bttnDoctor)
-                                .addComponent(bttnPatient)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton3))
                     .addGroup(MenuLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jButton1)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addGroup(MenuLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jButton1)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addComponent(bttnPatient)
-                .addGap(38, 38, 38)
-                .addComponent(bttnDoctor)
-                .addGap(37, 37, 37)
-                .addComponent(bttnHospital)
-                .addGap(38, 38, 38)
+                .addGap(76, 76, 76)
                 .addComponent(jButton1)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jButton2)
+                .addGap(47, 47, 47)
+                .addComponent(jButton3)
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         SplitPane.setLeftComponent(Menu);
@@ -112,11 +83,11 @@ public class AdminFrame extends javax.swing.JFrame {
         WorkSpace.setLayout(WorkSpaceLayout);
         WorkSpaceLayout.setHorizontalGroup(
             WorkSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         WorkSpaceLayout.setVerticalGroup(
             WorkSpaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
+            .addGap(0, 484, Short.MAX_VALUE)
         );
 
         SplitPane.setRightComponent(WorkSpace);
@@ -125,7 +96,7 @@ public class AdminFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane)
+            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,18 +105,6 @@ public class AdminFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bttnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnHospitalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bttnHospitalActionPerformed
-
-    private void bttnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bttnPatientActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,20 +123,20 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminFrame().setVisible(true);
+                new PatientFrame().setVisible(true);
             }
         });
     }
@@ -186,10 +145,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JSplitPane SplitPane;
     private javax.swing.JPanel WorkSpace;
-    private javax.swing.JButton bttnDoctor;
-    private javax.swing.JButton bttnHospital;
-    private javax.swing.JButton bttnPatient;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

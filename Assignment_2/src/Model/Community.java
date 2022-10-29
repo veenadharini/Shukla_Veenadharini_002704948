@@ -8,6 +8,7 @@ package Model;
  *
  * @author Veenadharini
  */
-public class Community {
+public class Community extends City{
+    public String communityName;
     
 }

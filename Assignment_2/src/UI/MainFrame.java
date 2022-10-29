@@ -25,7 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public MainFrame() {
         initComponents();
-        AdjustImage();
+        //AdjustImage();
     }
 
     /**
@@ -104,7 +104,7 @@ public class MainFrame extends javax.swing.JFrame {
             TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TitleLayout.setVerticalGroup(
@@ -122,18 +122,16 @@ public class MainFrame extends javax.swing.JFrame {
         WorkaAreaLayout.setHorizontalGroup(
             WorkaAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkaAreaLayout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
-                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
+            .addGroup(WorkaAreaLayout.createSequentialGroup()
+                .addComponent(lblIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         WorkaAreaLayout.setVerticalGroup(
             WorkaAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WorkaAreaLayout.createSequentialGroup()
                 .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 364, Short.MAX_VALUE))
         );
 
         SplitPane.setRightComponent(WorkaArea);
@@ -209,10 +207,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 
-    private void AdjustImage() {
-    ImageIcon imageIcon = new ImageIcon(new ImageIcon("pharmacy.png").getImage().getScaledInstance(278, 255, Image.SCALE_DEFAULT));
-    lblIcon.setIcon(imageIcon);    
-    }
+//    private void AdjustImage() {
+//    ImageIcon imageIcon = new ImageIcon(new ImageIcon("pharmacy.png").getImage().getScaledInstance(278, 255, Image.SCALE_DEFAULT));
+//    lblIcon.setIcon(imageIcon);    
+//    }
 
 
 }

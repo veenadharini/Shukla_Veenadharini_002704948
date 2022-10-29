@@ -109,8 +109,6 @@ public class SignupJPanel extends javax.swing.JPanel {
             }
         });
 
-        ComboComm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Community..", "Allston", "Back Bay", "Brooklyn Heights", "EastVillage" }));
-
         CombouserRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Role..", "Patient", "Doctor" }));
 
         bttnSubmit.setText("Submit");

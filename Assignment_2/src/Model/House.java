@@ -8,6 +8,24 @@ package Model;
  *
  * @author Veenadharini
  */
-public class House {
+public class House extends Community {
+    public int houseNo;
+    public int zip;
+
+    public int getHouseNo() {
+        return houseNo;
+    }
+
+    public void setHouseNo(int houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
     
 }
