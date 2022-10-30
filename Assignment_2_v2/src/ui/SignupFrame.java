@@ -447,7 +447,7 @@ public class SignupFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBloodGrp;
     private javax.swing.JComboBox<String> ComboCity;
-    private javax.swing.JComboBox<String> ComboComm;
+    public static javax.swing.JComboBox<String> ComboComm;
     private javax.swing.JComboBox<String> CombouserRole;
     private javax.swing.JPasswordField PassPwd;
     private javax.swing.JButton bttnLogin;
