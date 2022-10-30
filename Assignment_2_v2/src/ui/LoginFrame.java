@@ -213,7 +213,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     new DoctorFrame().setVisible(true);
                     dispose();
                 }
-                else if(role.equals("Paient")){
+                else if(role.equals("Patient")){
                     new PatientFrame().setVisible(true);
                     dispose(); 
                 }

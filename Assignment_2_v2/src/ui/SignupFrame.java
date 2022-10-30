@@ -5,6 +5,10 @@
 package ui;
 
 import java.awt.Color;
+import javax.swing.*;
+import java.sql.*;
+//import java.sql.Connection;
+//import java.sql.DriverManager;
 
 /**
  *
@@ -40,7 +44,7 @@ public class SignupFrame extends javax.swing.JFrame {
         lblAddress = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
-        txtID = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtMobile = new javax.swing.JTextField();
         comboGender = new javax.swing.JComboBox<>();
@@ -104,9 +108,9 @@ public class SignupFrame extends javax.swing.JFrame {
             }
         });
 
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
             }
         });
 
@@ -133,7 +137,7 @@ public class SignupFrame extends javax.swing.JFrame {
 
         lblName.setText("Name:");
 
-        lblID.setText("ID:");
+        lblID.setText("Username");
 
         ComboBloodGrp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Blood Group..", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
 
@@ -186,7 +190,7 @@ public class SignupFrame extends javax.swing.JFrame {
                     .addComponent(txtAddress)
                     .addComponent(txtMobile)
                     .addComponent(txtEmail)
-                    .addComponent(txtID)
+                    .addComponent(txtUsername)
                     .addComponent(txtname)
                     .addComponent(PassPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -221,7 +225,7 @@ public class SignupFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblID)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmail)
@@ -274,9 +278,9 @@ public class SignupFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -305,6 +309,49 @@ public class SignupFrame extends javax.swing.JFrame {
 
     private void bttnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSubmitActionPerformed
         
+        String role = CombouserRole.getSelectedItem().toString();
+        String gender = comboGender.getSelectedItem().toString();
+        String bloodgrp = ComboBloodGrp.getSelectedItem().toString();
+        String city = ComboCity.getSelectedItem().toString();
+        String comm = ComboComm.getSelectedItem().toString();
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,role);
+            ps.setString(2,txtUsername.getText());
+            ps.setString(3,txtname.getText());
+            ps.setString(4, txtAge.getText());
+            ps.setString(5, gender);
+            ps.setString(6, bloodgrp);
+            ps.setString(7,txtMobile.getText());
+            ps.setString(8,txtEmail.getText());
+            ps.setString(9,city);
+            ps.setString(10, comm);
+            ps.setString(11,txtAddress.getText());
+            ps.setString(12,PassPwd.getText());
+            ps.executeUpdate();  
+            
+            JOptionPane.showMessageDialog(null, "You have signed up successfully");
+            conn.close();
+            
+            txtUsername.setText("");
+            txtname.setText("");
+            txtAge.setText("");
+            txtMobile.setText("");
+            txtEmail.setText("");
+            txtAddress.setText("");
+            PassPwd.setText("");
+            
+            
+        }
+        
+        
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
     }//GEN-LAST:event_bttnSubmitActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
@@ -371,8 +418,8 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMobile;
+    private javax.swing.JTextField txtUsername;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }

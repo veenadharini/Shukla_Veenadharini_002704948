@@ -50,7 +50,7 @@
                   <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtMobile" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtUsername" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtname" alignment="0" max="32767" attributes="0"/>
                   <Component id="PassPwd" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
               </Group>
@@ -94,7 +94,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -237,9 +237,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtID">
+    <Component class="javax.swing.JTextField" name="txtUsername">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
@@ -307,7 +307,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID:"/>
+        <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="ComboBloodGrp">
