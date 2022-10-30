@@ -329,10 +329,12 @@ public class SignupFrame extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";//18
+            String sql2 = "insert into doctor_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";//15
             String sql1 ="insert into user_login values(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             PreparedStatement ps1 = conn.prepareStatement(sql1);
+            PreparedStatement ps2 = conn.prepareStatement(sql2);
             
             ps.setInt(1,0);
             ps.setString(2,role);
@@ -352,8 +354,6 @@ public class SignupFrame extends javax.swing.JFrame {
             ps.setString(16, "");
             ps.setString(17, "");
             ps.setString(18, "");
-            
-            
             ps.executeUpdate();  
             
             ps1.setInt(1,0);
@@ -361,6 +361,23 @@ public class SignupFrame extends javax.swing.JFrame {
             ps1.setString(3,txtUsername.getText());
             ps1.setString(4,PassPwd.getText());
             ps1.executeUpdate();
+            
+            ps2.setInt(1,0);
+            ps2.setString(2,role);
+            ps2.setString(3,txtUsername.getText());
+            ps2.setString(4,txtname.getText());
+            ps2.setString(5, txtAge.getText());
+            ps2.setString(6, gender);
+            ps2.setString(7, bloodgrp);
+            ps2.setString(8,txtMobile.getText());
+            ps2.setString(9,txtEmail.getText());
+            ps2.setString(10,city);
+            ps2.setString(11, comm);
+            ps2.setString(12,txtAddress.getText());
+            ps2.setString(13,PassPwd.getText());
+            ps2.setInt(14, 0);
+            ps2.setString(15,"");
+            ps2.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "You have signed up successfully");
             conn.close();
