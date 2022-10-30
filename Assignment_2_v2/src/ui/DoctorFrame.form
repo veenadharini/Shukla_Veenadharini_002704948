@@ -31,7 +31,7 @@
                   <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="422" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,7 +61,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lblTitle" alignment="1" pref="600" max="32767" attributes="0"/>
+              <Component id="lblTitle" alignment="1" pref="594" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

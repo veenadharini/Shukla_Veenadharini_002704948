@@ -290,6 +290,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsername;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtUsername;
+    public static javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

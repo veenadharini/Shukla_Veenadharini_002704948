@@ -33,9 +33,10 @@ public class PatientFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bttnProfile = new javax.swing.JButton();
+        bttnEncounterHist = new javax.swing.JButton();
+        bttnSearchDoc = new javax.swing.JButton();
+        bttnLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,19 +61,31 @@ public class PatientFrame extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Profile");
-
-        jButton3.setText("Encounter History");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bttnProfile.setText("Profile");
+        bttnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bttnProfileActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Search Doctors");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bttnEncounterHist.setText("Encounter History");
+        bttnEncounterHist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bttnEncounterHistActionPerformed(evt);
+            }
+        });
+
+        bttnSearchDoc.setText("Search Doctors");
+        bttnSearchDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnSearchDocActionPerformed(evt);
+            }
+        });
+
+        bttnLogOut.setText("Log out");
+        bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLogOutActionPerformed(evt);
             }
         });
 
@@ -84,35 +97,58 @@ public class PatientFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttnSearchDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnEncounterHist, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttnEncounterHist, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addComponent(bttnSearchDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void bttnSearchDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSearchDocActionPerformed
+        SearchDocFrame sdf = new SearchDocFrame();
+        sdf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnSearchDocActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bttnEncounterHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnEncounterHistActionPerformed
+        EncounterHistFrame ehf = new EncounterHistFrame();
+        ehf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnEncounterHistActionPerformed
+
+    private void bttnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLogOutActionPerformed
+        LoginFrame login = new LoginFrame();
+        login.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_bttnLogOutActionPerformed
+
+    private void bttnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnProfileActionPerformed
+        PatientProfileFrame ppf = new PatientProfileFrame();
+        ppf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +186,10 @@ public class PatientFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bttnEncounterHist;
+    private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnProfile;
+    private javax.swing.JButton bttnSearchDoc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables

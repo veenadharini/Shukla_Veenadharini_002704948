@@ -61,6 +61,7 @@ public class SignupFrame extends javax.swing.JFrame {
         lblAge = new javax.swing.JLabel();
         lblBloodGrp = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
+        bttnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,6 +163,13 @@ public class SignupFrame extends javax.swing.JFrame {
             }
         });
 
+        bttnLogin.setText("Log in");
+        bttnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,7 +203,9 @@ public class SignupFrame extends javax.swing.JFrame {
                     .addComponent(PassPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttnLogin)
+                        .addGap(49, 49, 49)
                         .addComponent(bttnSubmit)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -215,7 +225,6 @@ public class SignupFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -265,8 +274,10 @@ public class SignupFrame extends javax.swing.JFrame {
                             .addComponent(lblAge))
                         .addGap(18, 18, 18)
                         .addComponent(ComboBloodGrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(bttnSubmit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttnSubmit)
+                    .addComponent(bttnLogin))
                 .addGap(35, 35, 35))
         );
 
@@ -318,21 +329,38 @@ public class SignupFrame extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql1 ="insert into user_login values(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,role);
-            ps.setString(2,txtUsername.getText());
-            ps.setString(3,txtname.getText());
-            ps.setString(4, txtAge.getText());
-            ps.setString(5, gender);
-            ps.setString(6, bloodgrp);
-            ps.setString(7,txtMobile.getText());
-            ps.setString(8,txtEmail.getText());
-            ps.setString(9,city);
-            ps.setString(10, comm);
-            ps.setString(11,txtAddress.getText());
-            ps.setString(12,PassPwd.getText());
+            PreparedStatement ps1 = conn.prepareStatement(sql1);
+            
+            ps.setInt(1,0);
+            ps.setString(2,role);
+            ps.setString(3,txtUsername.getText());
+            ps.setString(4,txtname.getText());
+            ps.setString(5, txtAge.getText());
+            ps.setString(6, gender);
+            ps.setString(7, bloodgrp);
+            ps.setString(8,txtMobile.getText());
+            ps.setString(9,txtEmail.getText());
+            ps.setString(10,city);
+            ps.setString(11, comm);
+            ps.setString(12,txtAddress.getText());
+            ps.setString(13,PassPwd.getText());
+            ps.setString(14, "");
+            ps.setString(15, "");
+            ps.setString(16, "");
+            ps.setString(17, "");
+            ps.setString(18, "");
+            
+            
             ps.executeUpdate();  
+            
+            ps1.setInt(1,0);
+            ps1.setString(2,role);
+            ps1.setString(3,txtUsername.getText());
+            ps1.setString(4,PassPwd.getText());
+            ps1.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "You have signed up successfully");
             conn.close();
@@ -357,6 +385,12 @@ public class SignupFrame extends javax.swing.JFrame {
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeActionPerformed
+
+    private void bttnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLoginActionPerformed
+        LoginFrame login = new LoginFrame();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,6 +433,7 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboComm;
     private javax.swing.JComboBox<String> CombouserRole;
     private javax.swing.JPasswordField PassPwd;
+    private javax.swing.JButton bttnLogin;
     private javax.swing.JButton bttnSubmit;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JLabel lblAddress;
