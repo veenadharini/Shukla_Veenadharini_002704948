@@ -336,6 +336,7 @@ public class SignupFrame extends javax.swing.JFrame {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
             PreparedStatement ps2 = conn.prepareStatement(sql2);
             
+            if (role.equals("Patient")){
             ps.setInt(1,0);
             ps.setString(2,role);
             ps.setString(3,txtUsername.getText());
@@ -355,13 +356,16 @@ public class SignupFrame extends javax.swing.JFrame {
             ps.setString(17, "");
             ps.setString(18, "");
             ps.executeUpdate();  
+            }
             
-            ps1.setInt(1,0);
-            ps1.setString(2,role);
-            ps1.setString(3,txtUsername.getText());
-            ps1.setString(4,PassPwd.getText());
-            ps1.executeUpdate();
+           
+                ps1.setInt(1,0);
+                ps1.setString(2,role);
+                ps1.setString(3,txtUsername.getText());
+                ps1.setString(4,PassPwd.getText());
+                ps1.executeUpdate();
             
+            if (role.equals("Doctor")){
             ps2.setInt(1,0);
             ps2.setString(2,role);
             ps2.setString(3,txtUsername.getText());
@@ -380,7 +384,7 @@ public class SignupFrame extends javax.swing.JFrame {
             ps2.setString(16,"");
             ps2.setString(17,"");
             ps2.executeUpdate();
-            
+            }
             JOptionPane.showMessageDialog(null, "You have signed up successfully");
             conn.close();
             
