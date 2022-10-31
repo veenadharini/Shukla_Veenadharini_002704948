@@ -330,7 +330,7 @@ public class SignupFrame extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
             String sql = "insert into patient_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";//18
-            String sql2 = "insert into doctor_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";//15
+            String sql2 = "insert into doctor_records values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";//15
             String sql1 ="insert into user_login values(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             PreparedStatement ps1 = conn.prepareStatement(sql1);
@@ -377,6 +377,8 @@ public class SignupFrame extends javax.swing.JFrame {
             ps2.setString(13,PassPwd.getText());
             ps2.setInt(14, 0);
             ps2.setString(15,"");
+            ps2.setString(16,"");
+            ps2.setString(17,"");
             ps2.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "You have signed up successfully");
@@ -389,6 +391,12 @@ public class SignupFrame extends javax.swing.JFrame {
             txtEmail.setText("");
             txtAddress.setText("");
             PassPwd.setText("");
+            ComboBloodGrp.setSelectedIndex(0);
+            ComboCity.setSelectedIndex(0);
+            ComboComm.setSelectedIndex(-1);
+            comboGender.setSelectedIndex(0);
+            CombouserRole.setSelectedIndex(0);
+            
             
             
         }
