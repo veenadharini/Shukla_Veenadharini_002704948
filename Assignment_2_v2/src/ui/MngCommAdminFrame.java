@@ -5,6 +5,9 @@
 package ui;
 import java.awt.*;
 import javax.swing.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -35,6 +38,24 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         bttnLogOut = new javax.swing.JButton();
         bttnBack3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCommAdmin = new javax.swing.JTable();
+        bttnView = new javax.swing.JButton();
+        bttnDelete = new javax.swing.JButton();
+        lbl_id = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lbl_Comm = new javax.swing.JLabel();
+        txtrole = new javax.swing.JTextField();
+        lblHosp = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblHosp1 = new javax.swing.JLabel();
+        txtpassword = new javax.swing.JTextField();
+        lblHosp2 = new javax.swing.JLabel();
+        txtComm = new javax.swing.JTextField();
+        bttndisplay = new javax.swing.JButton();
+        bttnUpdate = new javax.swing.JButton();
+        lblHosp3 = new javax.swing.JLabel();
+        txtHosp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +71,7 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
@@ -75,6 +96,73 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
             }
         });
 
+        tblCommAdmin.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "role", "username", "password", "community", "hospital"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblCommAdmin);
+
+        bttnView.setText("View Records");
+        bttnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnViewActionPerformed(evt);
+            }
+        });
+
+        bttnDelete.setText("Delete Admin");
+        bttnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnDeleteActionPerformed(evt);
+            }
+        });
+
+        lbl_id.setText("ID:");
+
+        lbl_Comm.setText("role");
+
+        lblHosp.setText("username");
+
+        lblHosp1.setText("password:");
+
+        lblHosp2.setText("community:");
+
+        bttndisplay.setText("View Admin");
+        bttndisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttndisplayActionPerformed(evt);
+            }
+        });
+
+        bttnUpdate.setText("Update Admin");
+        bttnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnUpdateActionPerformed(evt);
+            }
+        });
+
+        lblHosp3.setText("hospital:");
+
+        txtHosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHospActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,18 +171,85 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(bttnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(bttndisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(bttnUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHosp3)
+                    .addComponent(lblHosp2)
+                    .addComponent(lblHosp1)
+                    .addComponent(lblHosp)
+                    .addComponent(lbl_Comm)
+                    .addComponent(lbl_id))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtrole)
+                            .addComponent(txtUsername)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtComm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bttnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bttnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_id)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_Comm)
+                            .addComponent(txtrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHosp)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHosp1)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHosp2)
+                            .addComponent(txtComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHosp3)
+                    .addComponent(txtHosp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttndisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -113,6 +268,152 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         saf.setVisible(true);
         dispose();
     }//GEN-LAST:event_bttnBack3ActionPerformed
+
+    private void bttnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnViewActionPerformed
+
+        String user = LoginFrame.txtUsername.getText();
+        //String community ="";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            Statement st = conn.createStatement();
+//            String sql = "select community from admin_records where username = '"+user+"'";
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            ResultSet rs =pst.executeQuery();
+//            while(rs.next()){
+//                community =  rs.getString("community");
+//            }
+
+            String sql1 = "select * from admin_records where role = 'Community Admin'";
+            PreparedStatement pst1 = conn.prepareStatement(sql1);
+            ResultSet rs1 =pst1.executeQuery();
+
+            DefaultTableModel tbl = (DefaultTableModel) tblCommAdmin.getModel();
+            tbl.setRowCount(0);
+
+            while(rs1.next()){
+                Object o[] = {rs1.getString("ID"),rs1.getString("role"), rs1.getString("username"), rs1.getString("password"),rs1.getString("community"),rs1.getString("hospital")};
+                tbl.addRow(o);
+            }
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_bttnViewActionPerformed
+
+    private void bttnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnDeleteActionPerformed
+
+        int selectedRowIndex = tblCommAdmin.getSelectedRow();
+        //ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a hospital to delete");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblCommAdmin.getModel();
+        String cell = tblCommAdmin.getModel().getValueAt(selectedRowIndex, 2).toString();
+        System.out.print(cell);
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql11 = "DELETE FROM city where hospital = '"+cell+"'" ;
+            PreparedStatement pst11 = conn11.prepareStatement(sql11);
+            pst11.execute();
+
+            String sql22 = "Update appointments SET hospital = '' where hospital ='"+cell+"'";
+            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+            pst22.execute();
+
+            String sql33 = "Update admin_records SET hospital = '' where hospital ='"+cell+"'";
+            PreparedStatement pst33 = conn11.prepareStatement(sql33);
+            pst33.execute();
+
+            String sql44 = "Update doctor_records SET doc_hosp = '' where doc_hosp ='"+cell+"'";
+            PreparedStatement pst44 = conn11.prepareStatement(sql44);
+            pst44.execute();
+
+            updateTable();
+            JOptionPane.showMessageDialog(null,"Hospital has been deleted successfully");
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_bttnDeleteActionPerformed
+
+    private void bttndisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttndisplayActionPerformed
+
+        int selectedRowIndex = tblCommAdmin.getSelectedRow();
+        //ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a community admin to view");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel)tblCommAdmin.getModel();
+        //Employee selectedEmployee = (Employee)model.getValueAt(selectedRowIndex, 0);
+
+        txtID.setText((String)tblCommAdmin.getValueAt(selectedRowIndex,0));
+        txtrole.setText((String)tblCommAdmin.getValueAt(selectedRowIndex,1));
+        txtUsername.setText((String)tblCommAdmin.getValueAt(selectedRowIndex,2));
+        txtpassword.setText((String)tblCommAdmin.getValueAt(selectedRowIndex, 3));
+        txtComm.setText((String)tblCommAdmin.getValueAt(selectedRowIndex, 4));
+        txtHosp.setText((String)tblCommAdmin.getValueAt(selectedRowIndex, 5));
+
+    }//GEN-LAST:event_bttndisplayActionPerformed
+
+    private void bttnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnUpdateActionPerformed
+
+        int selectedRowIndex = tblCommAdmin.getSelectedRow();
+        String ID = txtID.getText();
+        String comm = txtComm.getText();
+        String hosp = txtUsername.getText();
+        String doc_username ="";
+        String old_hosp = tblCommAdmin.getValueAt(selectedRowIndex, 2).toString();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            //String sql11 = "Update city SET hospital='"+hosp+"' WHERE community='"+comm+"'&& ID ='"+ID+"'";
+            String sql11 = "Update city SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            PreparedStatement pst11 = conn11.prepareStatement(sql11);
+            pst11.execute();
+
+            //            String sql22 = "select doc_username from city where hospital = '"+hosp+"'";
+            //            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+            //            ResultSet rs22 =pst22.executeQuery();
+            //            while(rs22.next()){
+                //                doc_username =  rs22.getString("doc_username");
+                //            }
+            String sql22 = "Update doctor_records SET doc_hosp='"+hosp+"' WHERE doc_hosp='"+old_hosp+"'";
+            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+            pst22.execute();
+
+            String sql33 = "Update admin_records SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            PreparedStatement pst33 = conn11.prepareStatement(sql33);
+            pst33.execute();
+
+            String sql44 = "Update appointments SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            PreparedStatement pst44 = conn11.prepareStatement(sql44);
+            pst44.execute();
+
+            updateTable();
+            JOptionPane.showMessageDialog(null,"Your Hospital details have been updated successfully");
+
+            txtID.setText("");
+            txtComm.setText("");
+            //txtHosp.setText("");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_bttnUpdateActionPerformed
+
+    private void txtHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHospActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,8 +455,63 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton bttnBack1;
     private javax.swing.JButton bttnBack2;
     private javax.swing.JButton bttnBack3;
+    private javax.swing.JButton bttnDelete;
     private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnUpdate;
+    private javax.swing.JButton bttnView;
+    private javax.swing.JButton bttndisplay;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblHosp;
+    private javax.swing.JLabel lblHosp1;
+    private javax.swing.JLabel lblHosp2;
+    private javax.swing.JLabel lblHosp3;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lbl_Comm;
+    private javax.swing.JLabel lbl_id;
+    private javax.swing.JTable tblCommAdmin;
     private javax.swing.JPanel titlePanel;
+    private javax.swing.JTextField txtComm;
+    private javax.swing.JTextField txtHosp;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtpassword;
+    private javax.swing.JTextField txtrole;
     // End of variables declaration//GEN-END:variables
+
+private void updateTable() {
+        String user = LoginFrame.txtUsername.getText();
+        String community ="";
+        //String sql ="Select * from city where";
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+           Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+           String sql = "select community from admin_records where username = '"+user+"'";
+           PreparedStatement pst = conn.prepareStatement(sql);
+           ResultSet rs =pst.executeQuery();
+            while(rs.next()){
+                community =  rs.getString("community");
+            }
+            
+            String sql1 = "select * from city where community = '"+community+"'";
+            PreparedStatement pst1 = conn.prepareStatement(sql1);
+            ResultSet rs1 =pst1.executeQuery();
+           //PreparedStatement pst = conn.prepareStatement(sql);
+           //ResultSet rs =pst.executeQuery();
+           //tblhospitals.setModel(DbUtils.resultSetToTableModel(rs1));
+           DefaultTableModel tbl = (DefaultTableModel) tblCommAdmin.getModel();
+            tbl.setRowCount(0);
+
+            while(rs1.next()){
+                Object o[] = {rs1.getString("ID"),rs1.getString("community"), rs1.getString("hospital")};
+                tbl.addRow(o);
+            }
+            
+            //String rss = rs1.getString("");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
 }

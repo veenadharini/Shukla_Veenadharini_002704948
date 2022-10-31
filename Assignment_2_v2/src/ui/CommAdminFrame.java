@@ -46,6 +46,7 @@ public class CommAdminFrame extends javax.swing.JFrame {
         bttnCommAdminProfile = new javax.swing.JButton();
         bttnMngHosp = new javax.swing.JButton();
         bttnMngHouse = new javax.swing.JButton();
+        bttnCreateHosp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +101,13 @@ public class CommAdminFrame extends javax.swing.JFrame {
             }
         });
 
+        bttnCreateHosp.setText("Add Hospital");
+        bttnCreateHosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateHospActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +123,8 @@ public class CommAdminFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bttnMngHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bttnMngHouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bttnCommAdminProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(bttnCommAdminProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttnCreateHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(101, 101, 101))
@@ -127,15 +136,19 @@ public class CommAdminFrame extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                        .addGap(84, 84, 84)
+                        .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(bttnCommAdminProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addComponent(bttnMngHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bttnMngHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-                .addGap(84, 84, 84)
-                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                        .addGap(18, 18, 18)
+                        .addComponent(bttnCreateHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bttnMngHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -163,6 +176,12 @@ public class CommAdminFrame extends javax.swing.JFrame {
     private void bttnMngHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHouseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bttnMngHouseActionPerformed
+
+    private void bttnCreateHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHospActionPerformed
+        AddHospFrame ahf = new AddHospFrame();
+        ahf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnCreateHospActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +220,7 @@ public class CommAdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCommAdminProfile;
+    private javax.swing.JButton bttnCreateHosp;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JButton bttnMngHosp;
     private javax.swing.JButton bttnMngHouse;

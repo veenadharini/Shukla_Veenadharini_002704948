@@ -281,18 +281,41 @@ public class MngHospFrame extends javax.swing.JFrame {
 
     private void bttnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnUpdateActionPerformed
         
+        int selectedRowIndex = tblhospitals.getSelectedRow();
         String ID = txtID.getText();
         String comm = txtComm.getText();
         String hosp = txtHosp.getText();
-        
-
+        String doc_username ="";
+        String old_hosp = tblhospitals.getValueAt(selectedRowIndex, 2).toString();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql11 = "Update city SET hospital='"+hosp+"' WHERE community='"+comm+"'&& ID ='"+ID+"'";
+            //String sql11 = "Update city SET hospital='"+hosp+"' WHERE community='"+comm+"'&& ID ='"+ID+"'";
+            String sql11 = "Update city SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
             pst11.execute();
+            
+//            String sql22 = "select doc_username from city where hospital = '"+hosp+"'";
+//            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+//            ResultSet rs22 =pst22.executeQuery();
+//            while(rs22.next()){
+//                doc_username =  rs22.getString("doc_username");
+//            }
+            String sql22 = "Update doctor_records SET doc_hosp='"+hosp+"' WHERE doc_hosp='"+old_hosp+"'";
+            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+            pst22.execute();
+            
+            String sql33 = "Update admin_records SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            PreparedStatement pst33 = conn11.prepareStatement(sql33);
+            pst33.execute();
+            
+            String sql44 = "Update appointments SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            PreparedStatement pst44 = conn11.prepareStatement(sql44);
+            pst44.execute();
+            
+            updateTable();
             JOptionPane.showMessageDialog(null,"Your Hospital details have been updated successfully");
+            
             
             txtID.setText("");
             txtComm.setText("");
@@ -320,16 +343,29 @@ public class MngHospFrame extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel model = (DefaultTableModel)tblhospitals.getModel();
-        String cell = tblhospitals.getModel().getValueAt(selectedRowIndex, 0).toString();
-       
+        String cell = tblhospitals.getModel().getValueAt(selectedRowIndex, 2).toString();
+        System.out.print(cell);
         
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql11 = "DELETE FROM city where id ="+ cell ;
+            String sql11 = "DELETE FROM city where hospital = '"+cell+"'" ;
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
             pst11.execute();
+            
+            String sql22 = "Update appointments SET hospital = '' where hospital ='"+cell+"'";
+            PreparedStatement pst22 = conn11.prepareStatement(sql22);
+            pst22.execute();
+            
+            String sql33 = "Update admin_records SET hospital = '' where hospital ='"+cell+"'";
+            PreparedStatement pst33 = conn11.prepareStatement(sql33);
+            pst33.execute();
+            
+            String sql44 = "Update doctor_records SET doc_hosp = '' where doc_hosp ='"+cell+"'";
+            PreparedStatement pst44 = conn11.prepareStatement(sql44);
+            pst44.execute();
+            
             updateTable();
             JOptionPane.showMessageDialog(null,"Hospital has been deleted successfully");
             
