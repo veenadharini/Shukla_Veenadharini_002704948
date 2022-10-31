@@ -298,7 +298,7 @@ public class SearchDocFrame extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
             String sql = "insert into appointments values(?,?,?,?,?,?,?,?)";//8
-            String sql1 ="update patient_records SET date='"+appt1+"'";
+            String sql1 ="update patient_records SET date='"+appt1+"' where Patient_username ='"+user+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1,0);
             ps.setString(2,txtComm.getText());

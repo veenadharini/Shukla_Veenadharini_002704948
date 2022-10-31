@@ -37,9 +37,21 @@ public class PatientListFrame extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         bttnLogOut = new javax.swing.JButton();
         bttnBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblEncountHist = new javax.swing.JTable();
         bttnview = new javax.swing.JButton();
+        bttnUpdate = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPatientlist = new javax.swing.JTable();
+        txtname = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtTemp = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtBp = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtPr = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDiagnosis = new javax.swing.JTextField();
+        bttnCreateVitals = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +73,7 @@ public class PatientListFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(lblTitle)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         bttnLogOut.setText("Log out");
@@ -78,7 +90,21 @@ public class PatientListFrame extends javax.swing.JFrame {
             }
         });
 
-        tblEncountHist.setModel(new javax.swing.table.DefaultTableModel(
+        bttnview.setText("View Patients");
+        bttnview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnviewActionPerformed(evt);
+            }
+        });
+
+        bttnUpdate.setText("Save Diagnosis");
+        bttnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnUpdateActionPerformed(evt);
+            }
+        });
+
+        tblPatientlist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -97,12 +123,46 @@ public class PatientListFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblEncountHist);
+        jScrollPane1.setViewportView(tblPatientlist);
 
-        bttnview.setText("View Patients");
-        bttnview.addActionListener(new java.awt.event.ActionListener() {
+        txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnviewActionPerformed(evt);
+                txtnameActionPerformed(evt);
+            }
+        });
+
+        lblName.setText("Name:");
+
+        jLabel1.setText("Temperature:");
+
+        txtTemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTempActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Blood Pressure:");
+
+        txtBp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBpActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Pulse rate:");
+
+        txtPr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Diagnosis:");
+
+        bttnCreateVitals.setText("Enter Vitals");
+        bttnCreateVitals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateVitalsActionPerformed(evt);
             }
         });
 
@@ -111,30 +171,73 @@ public class PatientListFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addComponent(bttnview, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addComponent(bttnCreateVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(29, 29, 29))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bttnview, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(lblName)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtname, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(txtTemp)
+                            .addComponent(txtBp)
+                            .addComponent(txtPr))
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bttnview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblName)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtBp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttnview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnCreateVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
         );
 
@@ -184,11 +287,11 @@ public class PatientListFrame extends javax.swing.JFrame {
             PreparedStatement pst2 = conn.prepareStatement(sql2);
             ResultSet rs2 =pst2.executeQuery();
             
-            DefaultTableModel tbl = (DefaultTableModel) tblEncountHist.getModel();
+            DefaultTableModel tbl = (DefaultTableModel) tblPatientlist.getModel();
             tbl.setRowCount(0);
             
             while(rs2.next()){
-                Object o[] = {rs2.getString("date"), rs2.getString("patient_name"),rs2.getString("patient_age"),rs2.getString("patient_gender"),rs2.getString("patient_bloodgrp"),rs2.getString("temperature"),rs2.getString("bloodpressure"),rs2.getString("pulse"),rs2.getString("diagnosis")};
+                Object o[] = {rs2.getString("patient_name"),rs2.getString("patient_age"),rs2.getString("patient_gender"),rs2.getString("patient_bloodgrp"),rs2.getString("date"),rs2.getString("temperature"),rs2.getString("bloodpressure"),rs2.getString("pulse"),rs2.getString("diagnosis")};
                 tbl.addRow(o);
 
             }
@@ -199,6 +302,59 @@ public class PatientListFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_bttnviewActionPerformed
+
+    private void bttnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnUpdateActionPerformed
+        String name = txtname.getText();
+        String temp = txtTemp.getText();
+        String bp = txtBp.getText();
+        String pr = txtPr.getText();
+        String diag = txtDiagnosis.getText();
+        
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql11 = "Update patient_records SET temperature='"+temp+"',bloodpressure='"+bp+"',pulse='"+pr+"',diagnosis='"+diag+"' WHERE patient_name='"+name+"'";
+            PreparedStatement pst11 = conn11.prepareStatement(sql11);
+            pst11.execute();
+            JOptionPane.showMessageDialog(null,"Your details have been updated successfully");
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }//GEN-LAST:event_bttnUpdateActionPerformed
+
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameActionPerformed
+
+    private void txtTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTempActionPerformed
+
+    private void txtBpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBpActionPerformed
+
+    private void txtPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrActionPerformed
+
+    private void bttnCreateVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateVitalsActionPerformed
+        int selectedRowIndex = tblPatientlist.getSelectedRow();
+        //ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        if (selectedRowIndex<0){
+            
+            JOptionPane.showMessageDialog(this, "Please select patient to enter the Vitals");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)tblPatientlist.getModel();
+        
+        txtname.setText((String)tblPatientlist.getValueAt(selectedRowIndex, 0));
+    }//GEN-LAST:event_bttnCreateVitalsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,11 +393,23 @@ public class PatientListFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnBack;
+    private javax.swing.JButton bttnCreateVitals;
     private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnUpdate;
     private javax.swing.JButton bttnview;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblEncountHist;
+    private javax.swing.JTable tblPatientlist;
+    private javax.swing.JTextField txtBp;
+    private javax.swing.JTextField txtDiagnosis;
+    private javax.swing.JTextField txtPr;
+    private javax.swing.JTextField txtTemp;
+    private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }
