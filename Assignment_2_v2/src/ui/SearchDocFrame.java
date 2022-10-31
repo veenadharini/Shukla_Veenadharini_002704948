@@ -293,11 +293,12 @@ public class SearchDocFrame extends javax.swing.JFrame {
         java.util.Date appt = Calender1.getCalendar().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String appt1 = dateFormat.format(appt);
-                
+              
             try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
             String sql = "insert into appointments values(?,?,?,?,?,?,?,?)";//8
+            String sql1 ="update patient_records SET date='"+appt1+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1,0);
             ps.setString(2,txtComm.getText());
@@ -307,7 +308,9 @@ public class SearchDocFrame extends javax.swing.JFrame {
             ps.setString(6,txtExp.getText());
             ps.setString(7,appt1);
             ps.setString(8,user);
-            ps.executeUpdate(); 
+            ps.executeUpdate();
+            PreparedStatement pst11 = conn.prepareStatement(sql1);
+            pst11.execute();
             JOptionPane.showMessageDialog(null, "Appointment confirmed");
             
             txtComm.setText("");

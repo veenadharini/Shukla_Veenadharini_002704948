@@ -86,7 +86,7 @@ public class PatientListFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Name", "Age", "Gender", "Blood group", "Temperature", "Blood pressure", "Pulse rate", "Diagnosis"
+                "Name", "Age", "Gender", "Blood group", "Date", "Temperature", "Blood pressure", "Pulse rate", "Diagnosis"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -188,8 +188,7 @@ public class PatientListFrame extends javax.swing.JFrame {
             tbl.setRowCount(0);
             
             while(rs2.next()){
-                Object o[] = {rs2.getString("date"), rs2.getString("patient_name"),rs2.getString("patient_age"),rs2.getString("patient_gender"),rs2.getString("patient_bloodgrp"),rs2.getString("temperature"),rs2.getString("bloodpressure"),rs2.getString("pulse"),rs2.getString("patient_bloodgrp"),rs2.getString("diagnosis")};
-                
+                Object o[] = {rs2.getString("date"), rs2.getString("patient_name"),rs2.getString("patient_age"),rs2.getString("patient_gender"),rs2.getString("patient_bloodgrp"),rs2.getString("temperature"),rs2.getString("bloodpressure"),rs2.getString("pulse"),rs2.getString("diagnosis")};
                 tbl.addRow(o);
 
             }
