@@ -4,7 +4,8 @@
  */
 package ui;
 
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -17,11 +18,18 @@ public class CommAdminFrame extends javax.swing.JFrame {
      */
     public CommAdminFrame() {
         initComponents();
+        scaleImage();
         
         Color c = new Color(153,204,255);
         getContentPane().setBackground(c);
     }
-
+    public void scaleImage(){
+        ImageIcon icon = new ImageIcon("C:\\Users\\realv\\OneDrive\\Pictures\\Saved Pictures\\CommunityAdmin.png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(lblimage.getWidth(), lblimage.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledImage = new ImageIcon(imgScale);
+        lblimage.setIcon(scaledImage);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +41,7 @@ public class CommAdminFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
+        lblimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,17 +66,25 @@ public class CommAdminFrame extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
+        lblimage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 444, Short.MAX_VALUE))
+                .addGap(89, 89, 89)
+                .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addGap(170, 170, 170))
         );
 
         pack();
@@ -112,5 +129,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblimage;
     // End of variables declaration//GEN-END:variables
 }

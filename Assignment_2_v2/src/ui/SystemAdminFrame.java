@@ -4,7 +4,8 @@
  */
 package ui;
 
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -17,10 +18,18 @@ public class SystemAdminFrame extends javax.swing.JFrame {
      */
     public SystemAdminFrame() {
         initComponents();
+        scaleImage();
+        
         Color c = new Color(153,204,255);
         getContentPane().setBackground(c);
     }
-
+public void scaleImage(){
+        ImageIcon icon = new ImageIcon("C:\\Users\\realv\\OneDrive\\Pictures\\Saved Pictures\\SystemAdmin.png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(lblimage.getWidth(), lblimage.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledImage = new ImageIcon(imgScale);
+        lblimage.setIcon(scaledImage);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +41,7 @@ public class SystemAdminFrame extends javax.swing.JFrame {
 
         titlePanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
+        lblimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,23 +63,31 @@ public class SystemAdminFrame extends javax.swing.JFrame {
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(lblTitle)
-                .addGap(38, 38, 38))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
+
+        lblimage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 451, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addGap(189, 189, 189))
         );
 
         pack();
@@ -113,6 +131,7 @@ public class SystemAdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblimage;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
 }

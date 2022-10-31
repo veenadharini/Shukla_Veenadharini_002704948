@@ -4,7 +4,9 @@
  */
 package ui;
 
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
+
 
 /**
  *
@@ -17,11 +19,18 @@ public class HospAdminFrame extends javax.swing.JFrame {
      */
     public HospAdminFrame() {
         initComponents();
+        scaleImage();
         
         Color c = new Color(153,204,255);
         getContentPane().setBackground(c);
     }
-
+    public void scaleImage(){
+        ImageIcon icon = new ImageIcon("C:\\Users\\realv\\OneDrive\\Pictures\\Saved Pictures\\HospitalAdmin.png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(lblimage.getWidth(), lblimage.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledImage = new ImageIcon(imgScale);
+        lblimage.setIcon(scaledImage);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,6 +45,7 @@ public class HospAdminFrame extends javax.swing.JFrame {
         lblAddDoc = new javax.swing.JButton();
         lblDeleteDoc = new javax.swing.JButton();
         lblViewdoc = new javax.swing.JButton();
+        lblimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +76,8 @@ public class HospAdminFrame extends javax.swing.JFrame {
 
         lblViewdoc.setText("View Doctors");
 
+        lblimage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,6 +89,8 @@ public class HospAdminFrame extends javax.swing.JFrame {
                     .addComponent(lblViewdoc, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDeleteDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,12 +98,15 @@ public class HospAdminFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(lblAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblDeleteDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblViewdoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 220, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDeleteDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblViewdoc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 177, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,5 +154,6 @@ public class HospAdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton lblDeleteDoc;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JButton lblViewdoc;
+    private javax.swing.JLabel lblimage;
     // End of variables declaration//GEN-END:variables
 }
