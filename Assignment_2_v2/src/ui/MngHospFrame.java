@@ -5,6 +5,8 @@
 package ui;
 import java.awt.*;
 import javax.swing.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,7 +36,17 @@ public class MngHospFrame extends javax.swing.JFrame {
         titlePanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         bttnLogOut = new javax.swing.JButton();
-        bttnBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblhospitals = new javax.swing.JTable();
+        bttnView = new javax.swing.JButton();
+        lbl_Comm = new javax.swing.JLabel();
+        txtComm = new javax.swing.JTextField();
+        lblHosp = new javax.swing.JLabel();
+        txtHosp = new javax.swing.JTextField();
+        bttndisplay = new javax.swing.JButton();
+        bttnUpdate = new javax.swing.JButton();
+        lbl_id = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +62,7 @@ public class MngHospFrame extends javax.swing.JFrame {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
@@ -68,12 +80,53 @@ public class MngHospFrame extends javax.swing.JFrame {
             }
         });
 
-        bttnBack.setText("Back");
-        bttnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnBackActionPerformed(evt);
+        tblhospitals.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Community", "Hospital"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(tblhospitals);
+
+        bttnView.setText("View Records");
+        bttnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnViewActionPerformed(evt);
+            }
+        });
+
+        lbl_Comm.setText("Community:");
+
+        lblHosp.setText("Hospital:");
+
+        bttndisplay.setText("View Hospital");
+        bttndisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttndisplayActionPerformed(evt);
+            }
+        });
+
+        bttnUpdate.setText("Update Hospital");
+        bttnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnUpdateActionPerformed(evt);
+            }
+        });
+
+        lbl_id.setText("ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,20 +134,60 @@ public class MngHospFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblHosp)
+                            .addComponent(lbl_Comm)
+                            .addComponent(lbl_id))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bttndisplay)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bttnUpdate)
+                                .addGap(48, 48, 48)
+                                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtComm)
+                                    .addComponent(txtHosp)
+                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_id)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Comm)
+                    .addComponent(txtComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHosp)
+                    .addComponent(txtHosp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttndisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -108,11 +201,80 @@ public class MngHospFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_bttnLogOutActionPerformed
 
-    private void bttnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnBackActionPerformed
-        DoctorFrame docfr = new DoctorFrame();
-        docfr.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_bttnBackActionPerformed
+    private void bttnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnViewActionPerformed
+
+        String user = LoginFrame.txtUsername.getText();
+        String community ="";
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            Statement st = conn.createStatement();
+            String sql = "select community from admin_records where username = '"+user+"'";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs =pst.executeQuery();
+            while(rs.next()){
+                community =  rs.getString("community");
+            }
+            
+            String sql1 = "select * from city where community = '"+community+"'";
+            PreparedStatement pst1 = conn.prepareStatement(sql1);
+            ResultSet rs1 =pst1.executeQuery();
+            
+            DefaultTableModel tbl = (DefaultTableModel) tblhospitals.getModel();
+            tbl.setRowCount(0);
+
+            while(rs1.next()){
+                Object o[] = {rs1.getString("ID"),rs1.getString("community"), rs1.getString("hospital")};
+                tbl.addRow(o);
+            }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_bttnViewActionPerformed
+
+    private void bttndisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttndisplayActionPerformed
+
+        int selectedRowIndex = tblhospitals.getSelectedRow();
+        //ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a hospital to view");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel)tblhospitals.getModel();
+        //Employee selectedEmployee = (Employee)model.getValueAt(selectedRowIndex, 0);
+
+        txtID.setText((String)tblhospitals.getValueAt(selectedRowIndex,0));
+        txtComm.setText((String)tblhospitals.getValueAt(selectedRowIndex,1));
+        txtHosp.setText((String)tblhospitals.getValueAt(selectedRowIndex, 2));
+       
+
+    }//GEN-LAST:event_bttndisplayActionPerformed
+
+    private void bttnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnUpdateActionPerformed
+        
+        String ID = txtID.getText();
+        String comm = txtComm.getText();
+        String hosp = txtHosp.getText();
+        
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql11 = "Update city SET hospital='"+hosp+"' WHERE community='"+comm+"'&& ID ='"+ID+"'";
+            PreparedStatement pst11 = conn11.prepareStatement(sql11);
+            pst11.execute();
+            JOptionPane.showMessageDialog(null,"Your Hospital details have been updated successfully");
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }//GEN-LAST:event_bttnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +312,19 @@ public class MngHospFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttnBack;
     private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnUpdate;
+    private javax.swing.JButton bttnView;
+    private javax.swing.JButton bttndisplay;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblHosp;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lbl_Comm;
+    private javax.swing.JLabel lbl_id;
+    private javax.swing.JTable tblhospitals;
     private javax.swing.JPanel titlePanel;
+    private javax.swing.JTextField txtComm;
+    private javax.swing.JTextField txtHosp;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

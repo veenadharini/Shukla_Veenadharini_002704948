@@ -34,6 +34,7 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         titlePanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         bttnLogOut = new javax.swing.JButton();
+        bttnBack3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,13 +68,22 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
             }
         });
 
+        bttnBack3.setText("Back");
+        bttnBack3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnBack3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(bttnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -81,9 +91,11 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
-                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -95,6 +107,12 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_bttnLogOutActionPerformed
+
+    private void bttnBack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnBack3ActionPerformed
+        SystemAdminFrame saf = new SystemAdminFrame();
+        saf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnBack3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +150,10 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttnBack;
+    private javax.swing.JButton bttnBack1;
+    private javax.swing.JButton bttnBack2;
+    private javax.swing.JButton bttnBack3;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel titlePanel;
