@@ -25,14 +25,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblViewdoc" min="-2" pref="212" max="-2" attributes="0"/>
-                  <Component id="lblDeleteDoc" min="-2" pref="212" max="-2" attributes="0"/>
-                  <Component id="lblAddDoc" min="-2" pref="212" max="-2" attributes="0"/>
+                  <Component id="bttnLogOut" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="bttnViewDoc" min="-2" pref="212" max="-2" attributes="0"/>
+                          <Component id="lblUnregisterDoc" min="-2" pref="212" max="-2" attributes="0"/>
+                          <Component id="bttnRegisterDoc" min="-2" pref="212" max="-2" attributes="0"/>
+                          <Component id="bttnHospAdminProfile" alignment="1" min="-2" pref="212" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="lblimage" min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="lblimage" min="-2" pref="200" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -40,19 +46,25 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="lblAddDoc" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblDeleteDoc" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblViewdoc" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="lblimage" min="-2" pref="187" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblimage" min="-2" pref="187" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="bttnHospAdminProfile" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="bttnRegisterDoc" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblUnregisterDoc" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bttnViewDoc" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="0" pref="177" max="32767" attributes="0"/>
+              <EmptySpace pref="111" max="32767" attributes="0"/>
+              <Component id="bttnLogOut" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,17 +108,17 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="lblAddDoc">
+    <Component class="javax.swing.JButton" name="bttnRegisterDoc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Register a Doctor "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="lblDeleteDoc">
+    <Component class="javax.swing.JButton" name="lblUnregisterDoc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Un-register a Doctor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="lblViewdoc">
+    <Component class="javax.swing.JButton" name="bttnViewDoc">
       <Properties>
         <Property name="text" type="java.lang.String" value="View Doctors"/>
       </Properties>
@@ -115,6 +127,22 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnLogOut">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Log out"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnLogOutActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnHospAdminProfile">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Profile"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnHospAdminProfileActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

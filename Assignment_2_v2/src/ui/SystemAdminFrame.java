@@ -42,6 +42,13 @@ public void scaleImage(){
         titlePanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         lblimage = new javax.swing.JLabel();
+        bttnLogOut = new javax.swing.JButton();
+        bttnMngHosp = new javax.swing.JButton();
+        bttnMngComm = new javax.swing.JButton();
+        bttnMngCities = new javax.swing.JButton();
+        MngHospAdmin = new javax.swing.JButton();
+        bttnMngCommAdmin = new javax.swing.JButton();
+        bttnMngHouse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +65,7 @@ public void scaleImage(){
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
@@ -71,28 +78,140 @@ public void scaleImage(){
 
         lblimage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        bttnLogOut.setText("Log out");
+        bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLogOutActionPerformed(evt);
+            }
+        });
+
+        bttnMngHosp.setText("Manage Hospitals");
+        bttnMngHosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnMngHospActionPerformed(evt);
+            }
+        });
+
+        bttnMngComm.setText("Manage Communities");
+        bttnMngComm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnMngCommActionPerformed(evt);
+            }
+        });
+
+        bttnMngCities.setText("Manage Cities");
+        bttnMngCities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnMngCitiesActionPerformed(evt);
+            }
+        });
+
+        MngHospAdmin.setText("Manage Hospital Admins");
+        MngHospAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MngHospAdminActionPerformed(evt);
+            }
+        });
+
+        bttnMngCommAdmin.setText("Manage Community Admins");
+        bttnMngCommAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnMngCommAdminActionPerformed(evt);
+            }
+        });
+
+        bttnMngHouse.setText("Manage Houses");
+        bttnMngHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnMngHouseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bttnMngHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttnMngComm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttnMngCities, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MngHospAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttnMngCommAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttnMngHouse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)
+                        .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(102, 102, 102))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                .addGap(189, 189, 189))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bttnMngCommAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MngHospAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttnMngCities, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttnMngComm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttnMngHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttnMngHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bttnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLogOutActionPerformed
+        LoginFrame login = new LoginFrame();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnLogOutActionPerformed
+
+    private void bttnMngHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHospActionPerformed
+        MngHospFrame mhf = new MngHospFrame();
+        mhf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnMngHospActionPerformed
+
+    private void bttnMngCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngCommActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnMngCommActionPerformed
+
+    private void bttnMngCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngCitiesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnMngCitiesActionPerformed
+
+    private void MngHospAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MngHospAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MngHospAdminActionPerformed
+
+    private void bttnMngCommAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngCommAdminActionPerformed
+       MngCommAdminFrame mcaf = new MngCommAdminFrame();
+       mcaf.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_bttnMngCommAdminActionPerformed
+
+    private void bttnMngHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHouseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnMngHouseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +249,13 @@ public void scaleImage(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MngHospAdmin;
+    private javax.swing.JButton bttnLogOut;
+    private javax.swing.JButton bttnMngCities;
+    private javax.swing.JButton bttnMngComm;
+    private javax.swing.JButton bttnMngCommAdmin;
+    private javax.swing.JButton bttnMngHosp;
+    private javax.swing.JButton bttnMngHouse;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblimage;
     private javax.swing.JPanel titlePanel;

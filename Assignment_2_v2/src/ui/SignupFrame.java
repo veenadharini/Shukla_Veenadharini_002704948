@@ -7,6 +7,8 @@ package ui;
 import java.awt.Color;
 import javax.swing.*;
 import java.sql.*;
+import model.City;
+import java.util.*;
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 
@@ -21,10 +23,37 @@ public class SignupFrame extends javax.swing.JFrame {
      */
     public SignupFrame() {
         initComponents();
+        //BindCombo();
+        fill_combo();
         Color c = new Color(153,204,255);
         getContentPane().setBackground(c);
+        
+        
     }
+    
+    
+    
+    public void fill_combo(){
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql = "Select distinct city_name from city";
+            
+            Statement st = conn.createStatement();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                ComboCity.addItem(rs.getString("city_name"));
+            }
+            
 
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +79,6 @@ public class SignupFrame extends javax.swing.JFrame {
         comboGender = new javax.swing.JComboBox<>();
         ComboCity = new javax.swing.JComboBox<>();
         PassPwd = new javax.swing.JPasswordField();
-        txtAddress = new javax.swing.JTextField();
         ComboComm = new javax.swing.JComboBox<>();
         lblName = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
@@ -62,6 +90,7 @@ public class SignupFrame extends javax.swing.JFrame {
         lblBloodGrp = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         bttnLogin = new javax.swing.JButton();
+        ComboAdd = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,10 +158,15 @@ public class SignupFrame extends javax.swing.JFrame {
 
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Gender..", "Male", "Female", "Others", "Do not wish to Specify" }));
 
-        ComboCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose City..", "Boston", "New York", " " }));
         ComboCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboCityActionPerformed(evt);
+            }
+        });
+
+        ComboComm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboCommActionPerformed(evt);
             }
         });
 
@@ -191,35 +225,39 @@ public class SignupFrame extends javax.swing.JFrame {
                             .addComponent(lblName))
                         .addGap(2, 2, 2)))
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAddress)
-                    .addComponent(txtMobile)
-                    .addComponent(txtEmail)
-                    .addComponent(txtUsername)
-                    .addComponent(txtname)
-                    .addComponent(PassPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bttnLogin)
-                        .addGap(49, 49, 49)
-                        .addComponent(bttnSubmit)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMobile)
+                            .addComponent(txtEmail)
+                            .addComponent(txtUsername)
+                            .addComponent(txtname)
+                            .addComponent(PassPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bttnLogin)
+                                .addGap(49, 49, 49)
+                                .addComponent(bttnSubmit)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUserRole, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblAge, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblBloodGrp, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CombouserRole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ComboBloodGrp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUserRole, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAge, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBloodGrp, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CombouserRole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBloodGrp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))))
+                        .addComponent(ComboAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,9 +295,9 @@ public class SignupFrame extends javax.swing.JFrame {
                             .addComponent(lblCommunity)
                             .addComponent(ComboComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAddress)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ComboAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPassword)
@@ -303,18 +341,45 @@ public class SignupFrame extends javax.swing.JFrame {
 
     private void ComboCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCityActionPerformed
         // TODO add your handling code here:
+//        String city = ComboCity.getSelectedItem().toString();
+//        try{
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+//            String sql = "Select distinct community from city where city_name='"+city+"'";
+//            Statement st = conn.createStatement();
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            ResultSet rs = st.executeQuery(sql);
+//            
+//            while(rs.next()){
+//                ComboComm.removeAllItems();
+//                ComboComm.addItem(rs.getString("community"));
+//                ComboComm.setSelectedItem(null);
+//            }
+//            
+//
+//        }
+//        catch(Exception e){
+//            JOptionPane.showMessageDialog(null,e);
+//        }
+//******************
         if(ComboCity.getSelectedItem().equals("Boston"))
         {
-            ComboComm.setSelectedItem(null);
+            ComboComm.removeAllItems();
             ComboComm.addItem("Allston");
             ComboComm.addItem("Back Bay");
+            ComboComm.setSelectedItem(null);
+            
+            
         }
         else
         if(ComboCity.getSelectedItem().equals("New York"))
         {
-            ComboComm.setSelectedItem(null);
+            ComboComm.removeAllItems();
             ComboComm.addItem("Brooklyn Heights");
-            ComboComm.addItem("EastVillage");
+            ComboComm.addItem("East Village");
+            ComboComm.setSelectedItem(null);
+            
+            
         }
     }//GEN-LAST:event_ComboCityActionPerformed
 
@@ -325,6 +390,7 @@ public class SignupFrame extends javax.swing.JFrame {
         String bloodgrp = ComboBloodGrp.getSelectedItem().toString();
         String city = ComboCity.getSelectedItem().toString();
         String comm = ComboComm.getSelectedItem().toString();
+        String add = ComboAdd.getSelectedItem().toString();
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -348,7 +414,7 @@ public class SignupFrame extends javax.swing.JFrame {
             ps.setString(9,txtEmail.getText());
             ps.setString(10,city);
             ps.setString(11, comm);
-            ps.setString(12,txtAddress.getText());
+            ps.setString(12,add);
             ps.setString(13,PassPwd.getText());
             ps.setString(14, "");
             ps.setString(15, "");
@@ -377,7 +443,7 @@ public class SignupFrame extends javax.swing.JFrame {
             ps2.setString(9,txtEmail.getText());
             ps2.setString(10,city);
             ps2.setString(11, comm);
-            ps2.setString(12,txtAddress.getText());
+            ps2.setString(12,add);
             ps2.setString(13,PassPwd.getText());
             ps2.setInt(14, 0);
             ps2.setString(15,"");
@@ -393,11 +459,12 @@ public class SignupFrame extends javax.swing.JFrame {
             txtAge.setText("");
             txtMobile.setText("");
             txtEmail.setText("");
-            txtAddress.setText("");
+            //txtAddress.setText("");
             PassPwd.setText("");
             ComboBloodGrp.setSelectedIndex(0);
             ComboCity.setSelectedIndex(0);
             ComboComm.setSelectedIndex(-1);
+            ComboAdd.setSelectedIndex(-1);
             comboGender.setSelectedIndex(0);
             CombouserRole.setSelectedIndex(0);
             
@@ -420,6 +487,64 @@ public class SignupFrame extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_bttnLoginActionPerformed
+
+    private void ComboCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCommActionPerformed
+        
+//        ComboComm.removeAllItems();
+//        MyQuery mq = new MyQuery();
+//        ArrayList<City> list = mq.getData(ComboCity.getSelectedItem().toString());
+//        for(int i = 0; i < list.size(); i++){
+//            ComboComm.addItem(list.get(i).getCommunity());
+//        } 
+        
+        
+        try{
+            if(ComboComm.getSelectedItem().equals("Allston"))
+            {
+               ComboAdd.removeAllItems();
+               ComboAdd.addItem("House no.1");
+               ComboAdd.addItem("House no.2");
+               ComboAdd.addItem("House no.3");
+               ComboAdd.addItem("House no.4");
+               ComboAdd.addItem("House no.5");
+               ComboAdd.setSelectedItem(null);
+               
+            }
+        else if(ComboComm.getSelectedItem().equals("Back Bay"))
+            {
+               ComboAdd.removeAllItems();
+               ComboAdd.addItem("House no.6");
+               ComboAdd.addItem("House no.7");
+               ComboAdd.addItem("House no.8");
+               ComboAdd.addItem("House no.9");
+               ComboAdd.addItem("House no.10"); 
+               ComboAdd.setSelectedItem(null);
+            }
+            if(ComboComm.getSelectedItem().equals("Brooklyn Heights"))
+            {
+               ComboAdd.removeAllItems();
+               ComboAdd.addItem("House no.11");
+               ComboAdd.addItem("House no.12");
+               ComboAdd.addItem("House no.13");
+               ComboAdd.addItem("House no.14");
+               ComboAdd.addItem("House no.15");
+               ComboAdd.setSelectedItem(null);
+            }
+            if(ComboComm.getSelectedItem().equals("East Village"))
+            {
+               ComboAdd.removeAllItems();
+               ComboAdd.addItem("House no.16");
+               ComboAdd.addItem("House no.17");
+               ComboAdd.addItem("House no.18");
+               ComboAdd.addItem("House no.19");
+               ComboAdd.addItem("House no.20");
+               ComboAdd.setSelectedItem(null);
+            }
+        }
+        catch(Exception e){
+            System.out.print(e);
+        }
+    }//GEN-LAST:event_ComboCommActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,6 +582,7 @@ public class SignupFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboAdd;
     private javax.swing.JComboBox<String> ComboBloodGrp;
     private javax.swing.JComboBox<String> ComboCity;
     public static javax.swing.JComboBox<String> ComboComm;
@@ -479,7 +605,6 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUserRole;
     private javax.swing.JPanel titlePanel;
-    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobile;
@@ -487,3 +612,64 @@ public class SignupFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }
+//    public void BindCombo() {
+//        
+//        try {
+//        Class.forName("com.mysql.jdbc.Driver");
+//        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+//        Statement st = conn.createStatement();
+//        String sql ="SELECT distinct city_name` FROM `city`";
+//        ResultSet rs = st.executeQuery(sql);
+//        
+//        while(rs.next()){
+//            ComboCity.addItem(rs.getString("city_name"));
+//        }
+//        }
+//        catch (Exception e) {
+//    JOptionPane.showMessageDialog(null,e);
+//    }
+//    }
+//
+//    public class MyQuery {
+//
+//            
+//        public Connection getConnection(){
+//        Connection con = null;
+//        try {
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital", "root","");
+//        } catch (Exception e) {
+//    JOptionPane.showMessageDialog(null,e);
+//    }
+//        return con;
+//    }
+//        }
+//    public ArrayList<City>getData(String city_name){
+//
+//    ArrayList<City> list = new ArrayList<City>();
+//     
+//    try {
+//        Class.forName("com.mysql.jdbc.Driver");
+//        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+//        Statement st = conn.createStatement();
+//        String sql ="SELECT `city_name`, `community`, `hospital`, `house` FROM `city` WHERE `city_name` = '"+city_name+"'";
+//        ResultSet rs = st.executeQuery(sql);
+//   
+//        City c;
+//        while(rs.next()){
+//            c = new City(
+//            rs.getString("city_name"),
+//            rs.getString("community"),
+//            rs.getString("Hospital"),
+//            rs.getString("House")
+//
+//            );
+//            list.add(c);
+//        }
+//   
+//    } catch (Exception e) {
+//    JOptionPane.showMessageDialog(null,e);
+//    }
+//    return list;
+//    }
+//    }
+    
