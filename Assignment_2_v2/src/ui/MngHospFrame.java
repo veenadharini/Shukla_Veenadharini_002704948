@@ -7,6 +7,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
+
 
 /**
  *
@@ -47,6 +50,8 @@ public class MngHospFrame extends javax.swing.JFrame {
         bttnUpdate = new javax.swing.JButton();
         lbl_id = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        bttnBack = new javax.swing.JButton();
+        bttnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,6 +133,20 @@ public class MngHospFrame extends javax.swing.JFrame {
 
         lbl_id.setText("ID:");
 
+        bttnBack.setText("Back");
+        bttnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnBackActionPerformed(evt);
+            }
+        });
+
+        bttnDelete.setText("Delete Hospital");
+        bttnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,31 +156,34 @@ public class MngHospFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHosp)
+                    .addComponent(lbl_Comm)
+                    .addComponent(lbl_id)
+                    .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblHosp)
-                            .addComponent(lbl_Comm)
-                            .addComponent(lbl_id))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bttndisplay)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bttnUpdate)
-                                .addGap(48, 48, 48)
-                                .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtComm)
-                                    .addComponent(txtHosp)
-                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(34, 34, 34)
+                        .addComponent(bttndisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttnUpdate)
+                        .addGap(29, 29, 29)
+                        .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtComm)
+                            .addComponent(txtHosp)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bttnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,9 +191,11 @@ public class MngHospFrame extends javax.swing.JFrame {
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttnView, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbl_id)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,7 +211,8 @@ public class MngHospFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bttndisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -268,13 +293,52 @@ public class MngHospFrame extends javax.swing.JFrame {
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
             pst11.execute();
             JOptionPane.showMessageDialog(null,"Your Hospital details have been updated successfully");
-
+            
+            txtID.setText("");
+            txtComm.setText("");
+            txtHosp.setText("");
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
 
     }//GEN-LAST:event_bttnUpdateActionPerformed
+
+    private void bttnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnBackActionPerformed
+        CommAdminFrame caf = new CommAdminFrame();
+        caf.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bttnBackActionPerformed
+
+    private void bttnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnDeleteActionPerformed
+        
+        int selectedRowIndex = tblhospitals.getSelectedRow();
+        //ImageIcon imageicon = new ImageIcon(selectedImagePath);
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a hospital to delete");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblhospitals.getModel();
+        String cell = tblhospitals.getModel().getValueAt(selectedRowIndex, 0).toString();
+       
+        
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+            String sql11 = "DELETE FROM city where id ="+ cell ;
+            PreparedStatement pst11 = conn11.prepareStatement(sql11);
+            pst11.execute();
+            updateTable();
+            JOptionPane.showMessageDialog(null,"Hospital has been deleted successfully");
+            
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }//GEN-LAST:event_bttnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +376,8 @@ public class MngHospFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttnBack;
+    private javax.swing.JButton bttnDelete;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JButton bttnUpdate;
     private javax.swing.JButton bttnView;
@@ -327,4 +393,42 @@ public class MngHospFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtHosp;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
+
+    private void updateTable() {
+        String user = LoginFrame.txtUsername.getText();
+        String community ="";
+        //String sql ="Select * from city where";
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+           Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+           String sql = "select community from admin_records where username = '"+user+"'";
+           PreparedStatement pst = conn.prepareStatement(sql);
+           ResultSet rs =pst.executeQuery();
+            while(rs.next()){
+                community =  rs.getString("community");
+            }
+            
+            String sql1 = "select * from city where community = '"+community+"'";
+            PreparedStatement pst1 = conn.prepareStatement(sql1);
+            ResultSet rs1 =pst1.executeQuery();
+           //PreparedStatement pst = conn.prepareStatement(sql);
+           //ResultSet rs =pst.executeQuery();
+           //tblhospitals.setModel(DbUtils.resultSetToTableModel(rs1));
+           DefaultTableModel tbl = (DefaultTableModel) tblhospitals.getModel();
+            tbl.setRowCount(0);
+
+            while(rs1.next()){
+                Object o[] = {rs1.getString("ID"),rs1.getString("community"), rs1.getString("hospital")};
+                tbl.addRow(o);
+            }
+            
+            //String rss = rs1.getString("");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
 }
