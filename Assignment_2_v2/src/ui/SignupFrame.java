@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.sql.*;
 import model.City;
 import java.util.*;
+import java.util.regex.Pattern;
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 
@@ -24,7 +25,7 @@ public class SignupFrame extends javax.swing.JFrame {
     public SignupFrame() {
         initComponents();
         //BindCombo();
-        fill_combo();
+        //fill_combo();
         Color c = new Color(153,204,255);
         getContentPane().setBackground(c);
         
@@ -33,27 +34,27 @@ public class SignupFrame extends javax.swing.JFrame {
     
     
     
-    public void fill_combo(){
-        
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql = "Select distinct city_name from city";
-            
-            Statement st = conn.createStatement();
-            PreparedStatement pst = conn.prepareStatement(sql);
-            ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
-                ComboCity.addItem(rs.getString("city_name"));
-            }
-            
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }
+//    public void fill_combo(){
+//        
+//        try{
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
+//            String sql = "Select distinct city_name from city";
+//            
+//            Statement st = conn.createStatement();
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            ResultSet rs = st.executeQuery(sql);
+//            
+//            while(rs.next()){
+//                ComboCity.addItem(rs.getString("city_name"));
+//            }
+//            
+//
+//        }
+//        catch(Exception e){
+//            JOptionPane.showMessageDialog(null,e);
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,12 +159,14 @@ public class SignupFrame extends javax.swing.JFrame {
 
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Gender..", "Male", "Female", "Others", "Do not wish to Specify" }));
 
+        ComboCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose city..", "Boston", "New York" }));
         ComboCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboCityActionPerformed(evt);
             }
         });
 
+        ComboComm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Community..", "Allston", "Back Bay", "Brooklyn Heights", "East Village" }));
         ComboComm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboCommActionPerformed(evt);
@@ -203,6 +206,8 @@ public class SignupFrame extends javax.swing.JFrame {
                 bttnLoginActionPerformed(evt);
             }
         });
+
+        ComboAdd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose house..", "House no. 1", "House no. 2", "House no. 3", "House no. 4", "House no. 5", "House no. 6", "House no. 7", "House no. 8", "House no. 9", "House no. 10", "House no. 11", "House no. 12", "House no. 13", "House no. 14", "House no. 15", "House no. 16", "House no. 17", "House no. 18", "House no. 19", "House no. 20" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -362,28 +367,104 @@ public class SignupFrame extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null,e);
 //        }
 //******************
-        if(ComboCity.getSelectedItem().equals("Boston"))
-        {
-            ComboComm.removeAllItems();
-            ComboComm.addItem("Allston");
-            ComboComm.addItem("Back Bay");
-            ComboComm.setSelectedItem(null);
-            
-            
-        }
-        else
-        if(ComboCity.getSelectedItem().equals("New York"))
-        {
-            ComboComm.removeAllItems();
-            ComboComm.addItem("Brooklyn Heights");
-            ComboComm.addItem("East Village");
-            ComboComm.setSelectedItem(null);
-            
-            
-        }
+//        if(ComboCity.getSelectedItem().toString().equals("Boston"))
+//        {
+//            //ComboComm.removeAllItems();
+//            ComboComm.addItem("Allston");
+//            ComboComm.addItem("Back Bay");
+//            //ComboComm.setSelectedItem(null);
+//            
+//            
+//        }
+//        else
+//        if(ComboCity.getSelectedItem().toString().equals("New York"))
+//        {
+//            //ComboComm.removeAllItems();
+//            ComboComm.addItem("Brooklyn Heights");
+//            ComboComm.addItem("East Village");
+//            //ComboComm.setSelectedItem(null);
+//            
+//            
+//        }
     }//GEN-LAST:event_ComboCityActionPerformed
 
     private void bttnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnSubmitActionPerformed
+        
+        String match = "";
+        String match1 = "";
+        
+        if(txtname.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Name Required");
+        txtname.requestFocus();
+        return;
+        }
+        else if(Pattern.matches("[a-zA-Z ]+", txtname.getText())){
+        match = "1";        
+        }
+       
+        else if(match.equals("")){
+        JOptionPane.showMessageDialog(null,"Name should Only be in Alphabets");
+        txtname.requestFocus();
+        return;
+        }
+        if(txtUsername.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Username Required");
+        txtUsername.requestFocus();
+        return;
+        }
+        if(txtMobile.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Mobile no. Required");
+        txtMobile.requestFocus();
+        return;
+        }
+        if(Pattern.matches("[0-9]{10}+", txtMobile.getText())){
+        match1 = "1";        
+        }
+       
+        if(match1.equals("")){
+        JOptionPane.showMessageDialog(null,"Mobile no. should be 10 digits");
+        txtMobile.requestFocus();
+        return;
+        }
+        if(txtEmail.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Email Required");
+        txtEmail.requestFocus();
+        return;
+        }
+        if(Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", txtEmail.getText())){
+        match1 = "1";        
+        }
+       
+        if(match1.equals("")){
+        JOptionPane.showMessageDialog(null,"Invalid email");
+        txtEmail.requestFocus();
+        return;
+        }
+        if(PassPwd.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Password Required");
+        PassPwd.requestFocus();
+        return;
+        }
+        if(txtAge.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Age Required");
+        txtAge.requestFocus();
+        return;
+        }
+       
+        if(Pattern.matches("[0-9]{1,3}+", txtAge.getText())){
+        match1 = "1";        
+        }
+       
+        if(match1.equals("")){
+        JOptionPane.showMessageDialog(null,"Age cannot be more than 100 years");
+        txtAge.requestFocus();
+        return;
+        
+        
+        }
+        
+        
+        
         
         String role = CombouserRole.getSelectedItem().toString();
         String gender = comboGender.getSelectedItem().toString();
@@ -498,52 +579,52 @@ public class SignupFrame extends javax.swing.JFrame {
 //        } 
         
         
-        try{
-            if(ComboComm.getSelectedItem().equals("Allston"))
-            {
-               ComboAdd.removeAllItems();
-               ComboAdd.addItem("House no.1");
-               ComboAdd.addItem("House no.2");
-               ComboAdd.addItem("House no.3");
-               ComboAdd.addItem("House no.4");
-               ComboAdd.addItem("House no.5");
-               ComboAdd.setSelectedItem(null);
-               
-            }
-        else if(ComboComm.getSelectedItem().equals("Back Bay"))
-            {
-               ComboAdd.removeAllItems();
-               ComboAdd.addItem("House no.6");
-               ComboAdd.addItem("House no.7");
-               ComboAdd.addItem("House no.8");
-               ComboAdd.addItem("House no.9");
-               ComboAdd.addItem("House no.10"); 
-               ComboAdd.setSelectedItem(null);
-            }
-            if(ComboComm.getSelectedItem().equals("Brooklyn Heights"))
-            {
-               ComboAdd.removeAllItems();
-               ComboAdd.addItem("House no.11");
-               ComboAdd.addItem("House no.12");
-               ComboAdd.addItem("House no.13");
-               ComboAdd.addItem("House no.14");
-               ComboAdd.addItem("House no.15");
-               ComboAdd.setSelectedItem(null);
-            }
-            if(ComboComm.getSelectedItem().equals("East Village"))
-            {
-               ComboAdd.removeAllItems();
-               ComboAdd.addItem("House no.16");
-               ComboAdd.addItem("House no.17");
-               ComboAdd.addItem("House no.18");
-               ComboAdd.addItem("House no.19");
-               ComboAdd.addItem("House no.20");
-               ComboAdd.setSelectedItem(null);
-            }
-        }
-        catch(Exception e){
-            System.out.print(e);
-        }
+        //try{
+//            if(ComboComm.getSelectedItem().toString().equals("Allston"))
+//            {
+//               //ComboAdd.removeAllItems();
+//               ComboAdd.addItem("House no.1");
+//               ComboAdd.addItem("House no.2");
+//               ComboAdd.addItem("House no.3");
+//               ComboAdd.addItem("House no.4");
+//               ComboAdd.addItem("House no.5");
+//               //ComboAdd.setSelectedItem(null);
+//               
+//            }
+//           if(ComboComm.getSelectedItem().toString().equals("Back Bay"))
+//            {
+//               //ComboAdd.removeAllItems();
+//               ComboAdd.addItem("House no.6");
+//               ComboAdd.addItem("House no.7");
+//               ComboAdd.addItem("House no.8");
+//               ComboAdd.addItem("House no.9");
+//               ComboAdd.addItem("House no.10"); 
+//               //ComboAdd.setSelectedItem(null);
+//            }
+//            if(ComboComm.getSelectedItem().toString().equals("Brooklyn Heights"))
+//            {
+//               //ComboAdd.removeAllItems();
+//               ComboAdd.addItem("House no.11");
+//               ComboAdd.addItem("House no.12");
+//               ComboAdd.addItem("House no.13");
+//               ComboAdd.addItem("House no.14");
+//               ComboAdd.addItem("House no.15");
+//               //ComboAdd.setSelectedItem(null);
+//            }
+//            if(ComboComm.getSelectedItem().toString().equals("East Village"))
+//            {
+//               //ComboAdd.removeAllItems();
+//               ComboAdd.addItem("House no.16");
+//               ComboAdd.addItem("House no.17");
+//               ComboAdd.addItem("House no.18");
+//               ComboAdd.addItem("House no.19");
+//               ComboAdd.addItem("House no.20");
+//               //ComboAdd.setSelectedItem(null);
+//            }
+//       // }
+////        catch(Exception e){
+////            System.out.print(e);
+////        }
     }//GEN-LAST:event_ComboCommActionPerformed
 
     /**
