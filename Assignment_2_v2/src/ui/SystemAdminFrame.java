@@ -51,6 +51,10 @@ public void scaleImage(){
         bttnMngHouse = new javax.swing.JButton();
         bttnCreateHosp = new javax.swing.JButton();
         bttnCreateHosp1 = new javax.swing.JButton();
+        bttnCreateHosp2 = new javax.swing.JButton();
+        bttnCreateHosp3 = new javax.swing.JButton();
+        bttnCreateHosp4 = new javax.swing.JButton();
+        bttnCreateHosp5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,6 +147,34 @@ public void scaleImage(){
             }
         });
 
+        bttnCreateHosp2.setText("Add Hospital Admin");
+        bttnCreateHosp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateHosp2ActionPerformed(evt);
+            }
+        });
+
+        bttnCreateHosp3.setText("Add Cities");
+        bttnCreateHosp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateHosp3ActionPerformed(evt);
+            }
+        });
+
+        bttnCreateHosp4.setText("Add Communities");
+        bttnCreateHosp4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateHosp4ActionPerformed(evt);
+            }
+        });
+
+        bttnCreateHosp5.setText("Add House");
+        bttnCreateHosp5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCreateHosp5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,9 +197,18 @@ public void scaleImage(){
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bttnCreateHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bttnCreateHosp1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(21, 21, 21)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bttnCreateHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bttnCreateHosp1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bttnCreateHosp5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bttnCreateHosp3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bttnCreateHosp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bttnCreateHosp4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)))
                         .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
         );
@@ -185,17 +226,25 @@ public void scaleImage(){
                             .addComponent(bttnMngCommAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addComponent(bttnCreateHosp1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MngHospAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MngHospAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnCreateHosp2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bttnMngCities, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bttnMngCities, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnCreateHosp3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bttnMngComm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bttnMngComm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnCreateHosp4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bttnMngHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bttnCreateHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bttnMngHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bttnMngHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bttnCreateHosp5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51)))
                 .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
@@ -236,7 +285,9 @@ public void scaleImage(){
     }//GEN-LAST:event_bttnMngCommAdminActionPerformed
 
     private void bttnMngHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHouseActionPerformed
-        // TODO add your handling code here:
+        MngHouseFrame mhff = new MngHouseFrame();
+        mhff.setVisible(true);
+        dispose();
     }//GEN-LAST:event_bttnMngHouseActionPerformed
 
     private void bttnCreateHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHospActionPerformed
@@ -248,6 +299,22 @@ public void scaleImage(){
     private void bttnCreateHosp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHosp1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bttnCreateHosp1ActionPerformed
+
+    private void bttnCreateHosp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHosp2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnCreateHosp2ActionPerformed
+
+    private void bttnCreateHosp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHosp3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnCreateHosp3ActionPerformed
+
+    private void bttnCreateHosp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHosp4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnCreateHosp4ActionPerformed
+
+    private void bttnCreateHosp5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHosp5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnCreateHosp5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +355,10 @@ public void scaleImage(){
     private javax.swing.JButton MngHospAdmin;
     private javax.swing.JButton bttnCreateHosp;
     private javax.swing.JButton bttnCreateHosp1;
+    private javax.swing.JButton bttnCreateHosp2;
+    private javax.swing.JButton bttnCreateHosp3;
+    private javax.swing.JButton bttnCreateHosp4;
+    private javax.swing.JButton bttnCreateHosp5;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JButton bttnMngCities;
     private javax.swing.JButton bttnMngComm;

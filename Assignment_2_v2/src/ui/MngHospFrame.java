@@ -334,7 +334,6 @@ public class MngHospFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnBackActionPerformed
 
     private void bttnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnDeleteActionPerformed
-        
         int selectedRowIndex = tblhospitals.getSelectedRow();
         //ImageIcon imageicon = new ImageIcon(selectedImagePath);
         if (selectedRowIndex<0){
@@ -345,7 +344,6 @@ public class MngHospFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)tblhospitals.getModel();
         String cell = tblhospitals.getModel().getValueAt(selectedRowIndex, 2).toString();
         System.out.print(cell);
-        
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -353,27 +351,28 @@ public class MngHospFrame extends javax.swing.JFrame {
             String sql11 = "DELETE FROM city where hospital = '"+cell+"'" ;
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
             pst11.execute();
-            
+
             String sql22 = "Update appointments SET hospital = '' where hospital ='"+cell+"'";
             PreparedStatement pst22 = conn11.prepareStatement(sql22);
             pst22.execute();
-            
+
             String sql33 = "Update admin_records SET hospital = '' where hospital ='"+cell+"'";
             PreparedStatement pst33 = conn11.prepareStatement(sql33);
             pst33.execute();
-            
+
             String sql44 = "Update doctor_records SET doc_hosp = '' where doc_hosp ='"+cell+"'";
             PreparedStatement pst44 = conn11.prepareStatement(sql44);
             pst44.execute();
-            
+
             updateTable();
             JOptionPane.showMessageDialog(null,"Hospital has been deleted successfully");
-            
-            
+
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
+                                            
+
     }//GEN-LAST:event_bttnDeleteActionPerformed
 
     /**

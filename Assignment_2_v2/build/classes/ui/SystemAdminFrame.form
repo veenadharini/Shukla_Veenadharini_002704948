@@ -43,10 +43,23 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="bttnCreateHosp" max="32767" attributes="0"/>
-                          <Component id="bttnCreateHosp1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="bttnCreateHosp" max="32767" attributes="0"/>
+                                  <Component id="bttnCreateHosp1" max="32767" attributes="0"/>
+                                  <Component id="bttnCreateHosp5" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="bttnCreateHosp3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bttnCreateHosp2" max="32767" attributes="0"/>
+                                  <Component id="bttnCreateHosp4" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="lblimage" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
@@ -70,18 +83,30 @@
                           <Component id="bttnCreateHosp1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="MngHospAdmin" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="MngHospAdmin" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="bttnCreateHosp2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bttnMngCities" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bttnMngCities" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="bttnCreateHosp3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bttnMngComm" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bttnMngComm" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="bttnCreateHosp4" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bttnMngHosp" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="bttnCreateHosp" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bttnMngHouse" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bttnMngHouse" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="bttnCreateHosp5" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -209,6 +234,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCreateHosp1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnCreateHosp2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Hospital Admin"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCreateHosp2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnCreateHosp3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Cities"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCreateHosp3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnCreateHosp4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Communities"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCreateHosp4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttnCreateHosp5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add House"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCreateHosp5ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

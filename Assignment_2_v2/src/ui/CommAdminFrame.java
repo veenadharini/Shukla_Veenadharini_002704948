@@ -174,7 +174,10 @@ public class CommAdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnMngHospActionPerformed
 
     private void bttnMngHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHouseActionPerformed
-        // TODO add your handling code here:
+        MngHouseFrame mhff = new MngHouseFrame();
+        mhff.setVisible(true);
+        dispose();
+     
     }//GEN-LAST:event_bttnMngHouseActionPerformed
 
     private void bttnCreateHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCreateHospActionPerformed
