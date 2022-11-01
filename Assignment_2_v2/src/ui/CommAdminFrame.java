@@ -43,7 +43,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         lblimage = new javax.swing.JLabel();
         bttnLogOut = new javax.swing.JButton();
-        bttnCommAdminProfile = new javax.swing.JButton();
         bttnMngHosp = new javax.swing.JButton();
         bttnMngHouse = new javax.swing.JButton();
         bttnCreateHosp = new javax.swing.JButton();
@@ -77,13 +76,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
         bttnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnLogOutActionPerformed(evt);
-            }
-        });
-
-        bttnCommAdminProfile.setText("Profile");
-        bttnCommAdminProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttnCommAdminProfileActionPerformed(evt);
             }
         });
 
@@ -123,7 +115,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bttnMngHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bttnMngHouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bttnCommAdminProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bttnCreateHosp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -141,8 +132,7 @@ public class CommAdminFrame extends javax.swing.JFrame {
                         .addComponent(bttnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bttnCommAdminProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(54, 54, 54)
                         .addComponent(bttnMngHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bttnCreateHosp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,12 +150,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_bttnLogOutActionPerformed
-
-    private void bttnCommAdminProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCommAdminProfileActionPerformed
-//        DoctorProfileFrame dpf = new DoctorProfileFrame();
-//        dpf.setVisible(true);
-//        dispose();
-    }//GEN-LAST:event_bttnCommAdminProfileActionPerformed
 
     private void bttnMngHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnMngHospActionPerformed
         MngHospFrame mhf = new MngHospFrame();
@@ -222,7 +206,6 @@ public class CommAdminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttnCommAdminProfile;
     private javax.swing.JButton bttnCreateHosp;
     private javax.swing.JButton bttnLogOut;
     private javax.swing.JButton bttnMngHosp;
