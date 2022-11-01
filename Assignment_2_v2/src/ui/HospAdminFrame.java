@@ -73,6 +73,11 @@ public class HospAdminFrame extends javax.swing.JFrame {
         );
 
         bttnRegisterDoc.setText("Register a Doctor ");
+        bttnRegisterDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnRegisterDocActionPerformed(evt);
+            }
+        });
 
         lblUnregisterDoc.setText("Un-register a Doctor");
 
@@ -149,6 +154,10 @@ public class HospAdminFrame extends javax.swing.JFrame {
 //        dpf.setVisible(true);
 //        dispose();
     }//GEN-LAST:event_bttnHospAdminProfileActionPerformed
+
+    private void bttnRegisterDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRegisterDocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttnRegisterDocActionPerformed
 
     /**
      * @param args the command line arguments

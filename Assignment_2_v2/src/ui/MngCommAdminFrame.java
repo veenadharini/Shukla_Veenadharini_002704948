@@ -308,7 +308,7 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         //ImageIcon imageicon = new ImageIcon(selectedImagePath);
         if (selectedRowIndex<0){
 
-            JOptionPane.showMessageDialog(this, "Please select a hospital to delete");
+            JOptionPane.showMessageDialog(this, "Please select a community admin to delete");
             return;
         }
         DefaultTableModel model = (DefaultTableModel)tblCommAdmin.getModel();
@@ -318,25 +318,12 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            String sql11 = "DELETE FROM city where hospital = '"+cell+"'" ;
+            String sql11 = "DELETE FROM admin_records where username = '"+cell+"'" ;
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
             pst11.execute();
 
-            String sql22 = "Update appointments SET hospital = '' where hospital ='"+cell+"'";
-            PreparedStatement pst22 = conn11.prepareStatement(sql22);
-            pst22.execute();
-
-            String sql33 = "Update admin_records SET hospital = '' where hospital ='"+cell+"'";
-            PreparedStatement pst33 = conn11.prepareStatement(sql33);
-            pst33.execute();
-
-            String sql44 = "Update doctor_records SET doc_hosp = '' where doc_hosp ='"+cell+"'";
-            PreparedStatement pst44 = conn11.prepareStatement(sql44);
-            pst44.execute();
-
             updateTable();
-            JOptionPane.showMessageDialog(null,"Hospital has been deleted successfully");
-
+            JOptionPane.showMessageDialog(null,"Community Admin has been deleted successfully");
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
@@ -369,44 +356,23 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
 
         int selectedRowIndex = tblCommAdmin.getSelectedRow();
         String ID = txtID.getText();
+        String role = txtrole.getText();
+        String username = txtUsername.getText();
+        String password = txtpassword.getText();
         String comm = txtComm.getText();
-        String hosp = txtUsername.getText();
-        String doc_username ="";
-        String old_hosp = tblCommAdmin.getValueAt(selectedRowIndex, 2).toString();
+        String hosp = txtHosp.getText();
+        
+        //String old_hosp = tblCommAdmin.getValueAt(selectedRowIndex, 2).toString();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn11 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-            //String sql11 = "Update city SET hospital='"+hosp+"' WHERE community='"+comm+"'&& ID ='"+ID+"'";
-            String sql11 = "Update city SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
+            String sql11 = "Update admin_records SET username='"+username+"',password='"+password+"',community='"+comm+"',hospital='"+hosp+"' WHERE hospital='"+hosp+"'";
             PreparedStatement pst11 = conn11.prepareStatement(sql11);
-            pst11.execute();
-
-            //            String sql22 = "select doc_username from city where hospital = '"+hosp+"'";
-            //            PreparedStatement pst22 = conn11.prepareStatement(sql22);
-            //            ResultSet rs22 =pst22.executeQuery();
-            //            while(rs22.next()){
-                //                doc_username =  rs22.getString("doc_username");
-                //            }
-            String sql22 = "Update doctor_records SET doc_hosp='"+hosp+"' WHERE doc_hosp='"+old_hosp+"'";
-            PreparedStatement pst22 = conn11.prepareStatement(sql22);
-            pst22.execute();
-
-            String sql33 = "Update admin_records SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
-            PreparedStatement pst33 = conn11.prepareStatement(sql33);
-            pst33.execute();
-
-            String sql44 = "Update appointments SET hospital='"+hosp+"' WHERE hospital='"+old_hosp+"'";
-            PreparedStatement pst44 = conn11.prepareStatement(sql44);
-            pst44.execute();
-
-            updateTable();
-            JOptionPane.showMessageDialog(null,"Your Hospital details have been updated successfully");
-
-            txtID.setText("");
-            txtComm.setText("");
-            //txtHosp.setText("");
-        }
-        catch(Exception e){
+            pst11.execute();     
+            JOptionPane.showMessageDialog(null,"Community admin details have been updated successfully");
+           
+                    }
+         catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
     }//GEN-LAST:event_bttnUpdateActionPerformed
@@ -480,19 +446,19 @@ public class MngCommAdminFrame extends javax.swing.JFrame {
 
 private void updateTable() {
         String user = LoginFrame.txtUsername.getText();
-        String community ="";
+       // String community ="";
         //String sql ="Select * from city where";
         try{
            Class.forName("com.mysql.jdbc.Driver");
            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/hospital","root","");
-           String sql = "select community from admin_records where username = '"+user+"'";
-           PreparedStatement pst = conn.prepareStatement(sql);
-           ResultSet rs =pst.executeQuery();
-            while(rs.next()){
-                community =  rs.getString("community");
-            }
+           //String sql = "select community from admin_records where username = '"+user+"'";
+           //PreparedStatement pst = conn.prepareStatement(sql);
+           //ResultSet rs =pst.executeQuery();
+            //while(rs.next()){
+               // community =  rs.getString("community");
             
-            String sql1 = "select * from city where community = '"+community+"'";
+            
+            String sql1 = "select * from admin_records where role = 'Community Admin'";
             PreparedStatement pst1 = conn.prepareStatement(sql1);
             ResultSet rs1 =pst1.executeQuery();
            //PreparedStatement pst = conn.prepareStatement(sql);
@@ -502,12 +468,12 @@ private void updateTable() {
             tbl.setRowCount(0);
 
             while(rs1.next()){
-                Object o[] = {rs1.getString("ID"),rs1.getString("community"), rs1.getString("hospital")};
+                Object o[] = {rs1.getString("ID"),rs1.getString("role"), rs1.getString("username"), rs1.getString("password"),rs1.getString("community"),rs1.getString("hospital")};
                 tbl.addRow(o);
             }
-            
-            //String rss = rs1.getString("");
         }
+            //String rss = rs1.getString("");
+        
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
